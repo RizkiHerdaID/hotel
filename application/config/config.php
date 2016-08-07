@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+date_default_timezone_set("Asia/Jakarta");
+function __autoload($classname) {
+	if (strpos($classname, 'CI_') !== 0) {
+		$file = APPPATH . 'libraries/' . $classname . '.php';
+		if (file_exists($file) && is_file($file)) {
+			@include_once($file);
+		}
+	}
+}
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://localhost/hotel/';
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +72,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
-$config['url_suffix'] = '';
+$config['url_suffix'] = '.html';
 
 /*
 |--------------------------------------------------------------------------
@@ -314,7 +322,8 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+
+$config['encryption_key'] = '123';
 
 /*
 |--------------------------------------------------------------------------
