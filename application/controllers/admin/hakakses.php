@@ -1,20 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+include ('Admin_Controller.php');
 class HakAkses extends Admin_Controller {
+
+	var $template = 'admin/template';
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_hakakses','hakakses');
 	}
 
 	public function index()
 	{
-		$data = [
-			'title' => 'Data Hak Akses',
-			'content' => 'admin/hakakses/index',
-			'hakakses' => $this->hakakses->read()
-		];
+		$data['content'] = 'admin/HakAkses/index';
 		$this->load->view($this->template, $data);
 	}
 }

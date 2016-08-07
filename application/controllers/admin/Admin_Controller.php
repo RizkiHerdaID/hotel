@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include ('Admin_Controller.php');
-class Transaksi extends Admin_Controller {
+
+class Admin_Controller extends My_Controller {
 
 	public function __construct()
 	{
@@ -14,5 +14,5 @@ class Transaksi extends Admin_Controller {
 
 }
 
-/* End of file  */
-/* Location: ./application/controllers/ */
+/* End of file Admin_Controller */
+/* Location: ./application/controllers/Admin_Controller */
