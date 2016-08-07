@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include ('Admin_Controller.php');
+include 'Admin_Controller.php';
 class Transaksi extends Admin_Controller {
 
 	public function __construct()

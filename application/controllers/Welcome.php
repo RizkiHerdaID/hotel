@@ -1,5 +1,5 @@
 <?php 
-include ('Frontend_Controller.php');
+include 'Frontend_Controller.php';
 class Welcome extends Frontend_Controller {
 
 	public function __construct()
