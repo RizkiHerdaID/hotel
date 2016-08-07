@@ -1,14 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-date_default_timezone_set("Asia/Jakarta");
-function __autoload($classname) {
-	if (strpos($classname, 'CI_') !== 0) {
-		$file = APPPATH . 'libraries/' . $classname . '.php';
-		if (file_exists($file) && is_file($file)) {
-			@include_once($file);
-		}
-	}
-}
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -72,7 +64,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
-$config['url_suffix'] = '.html';
+$config['url_suffix'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +76,7 @@ $config['url_suffix'] = '.html';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'Indonesian';
 
 /*
 |--------------------------------------------------------------------------
