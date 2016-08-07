@@ -1,13 +1,13 @@
 <!--
-Author: W3layouts
-Author URL: http://w3layouts.com
+Author: mascitra
+Author URL: http://mascitra.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
 <head>
-<title>Underconstruction - Hotels in Jember</title>
+<title>Hotels in Lumajang</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>

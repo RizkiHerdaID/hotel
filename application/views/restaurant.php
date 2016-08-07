@@ -8,7 +8,7 @@
 				 <a href="#"><img src="<?php echo base_url('images/') ?>pic1.jpg" alt=""/></a>
 				 <div class="caption">
 					<span>&#8356; 250</span>
-					<a href="contact.html">Book Now</a>
+					<a href="contact">Book Now</a>
 				 </div>
 				 <h4>Lorem ipsum dolor</h4>
 				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque lectus vitae dui sollicitudin commodo.</p>
@@ -25,7 +25,7 @@
 				 <a href="#"><img src="<?php echo base_url('images/') ?>pic2.jpg" alt=""/></a>
 				 <div class="caption">
 					<span>&#8356; 250</span>
-					<a href="contact.html">Book Now</a>
+					<a href="contact">Book Now</a>
 				 </div>
 				 <h4>Lorem ipsum dolor</h4>
 				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque lectus vitae dui sollicitudin commodo.</p>
@@ -42,7 +42,7 @@
 				 <a href="#"><img src="<?php echo base_url('images/') ?>pic3.jpg" alt=""/></a>
 				 <div class="caption">
 					<span>&#8356; 250</span>
-					<a href="contact.html">Book Now</a>
+					<a href="contact">Book Now</a>
 				 </div>
 				 <h4>Lorem ipsum dolor</h4>
 				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque lectus vitae dui sollicitudin commodo.</p>
@@ -60,7 +60,7 @@
 				 <a href="#"><img src="<?php echo base_url('images/') ?>pic4.jpg" alt=""/></a>
 				 <div class="caption">
 					<span>&#8356; 250</span>
-					<a href="contact.html">Book Now</a>
+					<a href="contact">Book Now</a>
 				 </div>
 				 <h4>Lorem ipsum dolor</h4>
 				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque lectus vitae dui sollicitudin commodo.</p>
@@ -77,7 +77,7 @@
 				 <a href="#"><img src="<?php echo base_url('images/') ?>pic5.jpg" alt=""/></a>
 				 <div class="caption">
 					<span>&#8356; 250</span>
-					<a href="contact.html">Book Now</a>
+					<a href="contact">Book Now</a>
 				 </div>
 				 <h4>Lorem ipsum dolor</h4>
 				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque lectus vitae dui sollicitudin commodo.</p>
@@ -94,7 +94,7 @@
 				 <a href="#"><img src="<?php echo base_url('images/') ?>pic6.jpg" alt=""/></a>
 				 <div class="caption">
 					<span>&#8356; 250</span>
-					<a href="contact.html">Book Now</a>
+					<a href="contact">Book Now</a>
 				 </div>
 				 <h4>Lorem ipsum dolor</h4>
 				 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque lectus vitae dui sollicitudin commodo.</p>
