@@ -20,23 +20,41 @@
                     <?php $no = 1; ?>
                     <?php foreach($kamar as $list): ?>
 
-                        <tr>
+                        <tr 
+                        <?php 
+	                        if ($list['status']==1)
+	                        	echo 'class="danger"';
+	                        else	
+	                        	echo 'class="success"';
+                        ?>
+                         >
                             <td><?=$no++?></td>
                             <td><?=$list['numbers']?></td>
                             <td><?=$list['title']?></td>
                             <td>
 	                            <?php
 	                            if ($list['status']==1) {
-	                            	echo "<p class='text-danger' style='text-align: center;'>Terpakai</p>";
+	                            	echo 'Terpakai';
 	                            } else {
-	                            	echo "<p class='text-success' style='text-align: center;'>Tersedia</p>";
+	                            	echo 'Tersedia';
 	                            }
 	                            ?>
                             </td>
                             <td>
                                <button class="btn btn-warning btn-xs">Detail</button>
                                <button class="btn btn-success btn-xs">Ganti</button>
-                               <button class="btn btn-danger btn-xs">Hapus</button>
+                               <button type="button"
+                               		<?php 
+                               		if ($list['status'] == 1) {
+                               			echo 'class="btn btn-muted btn-xs disabled"';
+                               		} else {
+                               			echo 'class="btn btn-danger btn-xs"';
+                               		}
+                               		
+                               		?>
+                               >
+                               Hapus
+                               </button>
                             </td>
                         </tr>
 
@@ -54,18 +72,18 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="username">Nomor Kamar	</label>  
+				  <label class="col-md-4 control-label" for="no_room">Nomor Kamar	</label>  
 				  <div class="col-md-8">
-				  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="no_room" name="no_room" type="text" placeholder="" class="form-control input-md" required="">
 				    
 				  </div>
 				</div>
 
 				<!-- Select Basic -->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="level">Jenis Kamar</label>
+				  <label class="col-md-4 control-label" for="room">Jenis Kamar</label>
 				  <div class="col-md-8">
-				    <select id="level" name="level" class="form-control">
+				    <select id="room" name="room" class="form-control">
 				      <option value="1">Single Room</option>
 				      <option value="2">Double Room</option>
 				    </select>

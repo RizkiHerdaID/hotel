@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Admin - Hotel Fortune</title>
+    <title><?= $title ?> - Administrator</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets_ad/') ?>css/bootstrap.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Administrator - Dashboard</b></a>
+            <a href="index.html" class="logo"><b><?= $title ?> - Administrator</b></a>
             <!--logo end-->
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
@@ -88,7 +88,6 @@
     <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.sparkline.js"></script>
-
 
     <!--common script for all pages-->
     <script src="<?php echo base_url('assets_ad/') ?>/js/common-scripts.js"></script>

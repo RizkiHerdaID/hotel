@@ -44,18 +44,18 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="username">Nama</label>  
+				  <label class="col-md-4 control-label" for="servicename">Nama</label>  
 				  <div class="col-md-8">
-				  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="servicename" name="servicename" type="text" placeholder="" class="form-control input-md" required="">
 				    
 				  </div>
 				</div>
 
 				<!-- Text input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="name">Harga</label>  
+				  <label class="col-md-4 control-label" for="price">Harga</label>  
 				  <div class="col-md-8">
-				  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="price" name="price" type="text" placeholder="" class="form-control input-md" required="">
 				    
 				  </div>
 				</div>
