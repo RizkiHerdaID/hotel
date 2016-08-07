@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title><?= $title ?> - Administrator</title>
+    <title>Admin - Hotel Fortune</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets_ad/') ?>css/bootstrap.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Administrator - <?= $title ?></b></a>
+            <a href="index.html" class="logo"><b>Administrator - Dashboard</b></a>
             <!--logo end-->
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
