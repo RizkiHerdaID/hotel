@@ -1,14 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-date_default_timezone_set("Asia/Jakarta");
-function __autoload($classname) {
-	if (strpos($classname, 'CI_') !== 0) {
-		$file = APPPATH . 'libraries/' . $classname . '.php';
-		if (file_exists($file) && is_file($file)) {
-			@include_once($file);
-		}
-	}
-}
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -31,7 +23,7 @@ function __autoload($classname) {
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/hotel/';
+$config['base_url'] = 'http://hotel.mascitra.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +64,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
-$config['url_suffix'] = '.html';
+$config['url_suffix'] = '';
 
 /*
 |--------------------------------------------------------------------------
