@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+include ('Frontend_Controller.php');
 class Facilities extends Frontend_Controller {
 
 	public function __construct()
@@ -9,7 +9,7 @@ class Facilities extends Frontend_Controller {
 
 	public function index()
 	{
-		$this->load->view('Facilities');	
+		$this->load->view('facilities');	
 	}
 
 }
