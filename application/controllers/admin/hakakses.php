@@ -19,6 +19,68 @@ class HakAkses extends Admin_Controller {
 		$this->load->view($this->template, $data);
 	}
 
+    public function details($id, $id_group){
+        $data = [
+            'title' => 'Detail Pengurus & Hak Akses',
+            'content' => 'admin/hakakses/detail',
+            'detail' => $this->m_hakakses->read($id, $id_group)
+        ];
+        $this->load->view($this->template, $data);
+    }
+
+    public function viewUpdate($id, $id_group){
+        $data = [
+            'title' => 'Update Data Pengurus & Hak Akses',
+            'content' => 'admin/hakakses/update',
+            'detail' => $this->m_hakakses->read($id, $id_group)
+        ];
+        $this->load->view($this->template, $data);
+    }
+
+    public function update(){
+        $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required');
+        $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|required');
+        $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|max_length[100]');
+        $this->form_validation->set_rules('phone', 'Telepon / HP', 'trim|required|is_natural|max_length[20]');
+        $this->form_validation->set_rules('level', 'Level', 'trim|required|is_natural');
+        $user_id = $this->input->post('userid');
+        $username = $this->input->post('username');
+        if ($this->form_validation->run() == FALSE)
+            {
+                //ERROR
+                $data = [
+                    "operation" => "warning",
+                    "message" => validation_errors()
+                ];
+            } 
+            else 
+            {
+                $data = [
+                    'first_name' => $this->input->post('fname'),
+                    'last_name' => $this->input->post('lname'),
+                    'email' => $this->input->post('email'),
+                    'phone' => $this->input->post('phone'),
+                ];
+                if($this->m_hakakses->update($data, $user_id)) {
+                    $this->session->set_flashdata("operation", "success");
+                    $this->session->set_flashdata("message", "<strong>Pengurus</strong> berhasil di update");
+                    redirect('admin/hakakses');
+                } else {
+                    $data = [
+                        "operation" => "warning",
+                        "message" => "Maaf. Terjadi kesalahan sistem.",
+                    ];
+                }
+            }
+        $id_group = $this->input->post('level');
+        $data = [
+            'title' => 'Update Data Pengurus & Hak Akses',
+            'content' => 'admin/hakakses/update',
+            'detail' => $this->m_hakakses->read($user_id, $id_group)
+        ];
+        $this->load->view($this->template, $data);
+    }
+
 	public function create(){
 		if($this->input->server('REQUEST_METHOD') == "POST")
         {
