@@ -39,9 +39,11 @@ if(isset($title)){
         case 'Data Detail Grup Tamu':
         case 'Update Data Grup Tamu':
             $master_active = "active";
-            $grup_active = "active";
+            $grup_active = "active" ;
             break;
         case "Data Tamu":
+        case "Detail Data Tamu":
+        case "Update Data Tamu":
             $master_active = "active";
             $tamu_active = "active";
             break;
