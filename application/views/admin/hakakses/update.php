@@ -50,7 +50,7 @@
         <?php endforeach; ?>
       </div>
       <div class="panel-footer">
-        <a href="<?=site_url('admin/hakakses')?>" class="btn btn-warning" >Kembali</a>
+        <a href="<?=site_url('admin/hakAkses')?>" class="btn btn-warning" >Kembali</a>
         <button id="Submit" name="Submit" class="btn btn-success pull-right">Update</button>
       </div>
     </div>

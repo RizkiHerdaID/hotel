@@ -144,16 +144,16 @@
 	
 	function deleteData(id){
 	// do your stuffs with id
-		window.location.assign("<?=site_url('admin/hakakses/delete/')?>"+id)
+		window.location.assign("<?=site_url('admin/hakAkses/delete/')?>"+id)
 		$('#deleteModal').modal('hide'); // now close modal
 	}
 
 	function detailUser(id, group){
-		window.location.assign("<?=site_url('admin/hakakses/details/')?>"+id+"/"+group)
+		window.location.assign("<?=site_url('admin/hakAkses/details/')?>"+id+"/"+group)
 	}
 
 	function updateUser(id, group){
-		window.location.assign("<?=site_url('admin/hakakses/viewUpdate/')?>"+id+"/"+group)
+		window.location.assign("<?=site_url('admin/hakAkses/viewUpdate/')?>"+id+"/"+group)
 	}
 </script>
 

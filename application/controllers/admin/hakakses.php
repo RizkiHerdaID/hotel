@@ -76,7 +76,7 @@ class HakAkses extends CI_Controller {
                 if($this->m_hakakses->create($data, $user_id, $id_group)) {
                 	$this->session->set_flashdata("operation", "success");
                     $this->session->set_flashdata("message", "<strong>Pengurus</strong> berhasil ditambah");
-                    redirect('admin/hakakses');
+                    redirect('admin/hakAkses');
                 } else {
                 	$data = [
                         "operation" => "warning",
@@ -88,8 +88,8 @@ class HakAkses extends CI_Controller {
 
         $data = [
 			'title' => 'Data Hak Akses',
-			'content' => 'admin/hakakses/index',
-			'hakakses' => $this->m_hakakses->read()
+			'content' => 'admin/hakAkses/index',
+			'hakAkses' => $this->m_hakakses->read()
 		];
         $this->load->view($this->template, $data);
 	}
@@ -121,7 +121,7 @@ class HakAkses extends CI_Controller {
                 if($this->m_hakakses->update($data, $user_id)) {
                     $this->session->set_flashdata("operation", "success");
                     $this->session->set_flashdata("message", "<strong>Pengurus</strong> berhasil di update");
-                    redirect('admin/hakakses');
+                    redirect('admin/hakAkses');
                 } else {
                     $data = [
                         "operation" => "warning",
@@ -150,7 +150,7 @@ class HakAkses extends CI_Controller {
             $this->session->set_flashdata("operation", "danger");
             $this->session->set_flashdata("message", "<strong>Gagal</strong> Terjadi kesalah sistem.");
         }
-        redirect("admin/hakakses");
+        redirect("admin/hakAkses");
     }
 }
 

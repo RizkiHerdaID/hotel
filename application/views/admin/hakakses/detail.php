@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="panel-footer">
-      <a href="<?=site_url('admin/hakakses')?>" class="btn btn-warning" >Kembali</a>
+      <a href="<?=site_url('admin/hakAkses')?>" class="btn btn-warning" >Kembali</a>
     </div>
   </div>
 </div>
