@@ -32,8 +32,6 @@ if(isset($title)){
         case "Data Hak Akses":
         case "Detail Pengurus & Hak Akses":
         case 'Update Data Pengurus & Hak Akses':
-          # code...
-          break;
             $master_active = "active";
             $hak_akses_active = "active";
             break;
