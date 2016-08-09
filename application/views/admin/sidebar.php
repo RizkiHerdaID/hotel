@@ -35,7 +35,9 @@ if(isset($title)){
             $master_active = "active";
             $hak_akses_active = "active";
             break;
-        case "Data Grup":
+        case "Data Grup Tamu":
+        case 'Data Detail Grup Tamu':
+        case 'Update Data Grup Tamu':
             $master_active = "active";
             $grup_active = "active";
             break;
@@ -119,7 +121,7 @@ MAIN SIDEBAR MENU
         </a>
         <ul class="sub">
           <li class="<?= $hak_akses_active ?>"><a href="<?php echo site_url('admin/hakAkses') ?>">Data Hak Akses</a></li>
-          <li class="<?= $grup_active ?>"><a  href="<?php echo site_url('admin/grup') ?>">Data Grup</a></li>
+          <li class="<?= $grup_active ?>"><a  href="<?php echo site_url('admin/grup') ?>">Data Grup Tamu</a></li>
           <li class="<?= $tamu_active ?>"><a  href="<?php echo site_url('admin/tamu') ?>">Data Tamu</a></li>
           <li class="<?= $jenis_active ?>"><a  href="<?php echo site_url('admin/jenis') ?>">Data Jenis Kamar</a></li>
           <li class="<?= $kamar_active ?>"><a  href="<?php echo site_url('admin/kamar') ?>">Data Kamar</a></li>

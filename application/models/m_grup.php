@@ -11,8 +11,11 @@ class M_grup extends CI_Model {
 		
 	}
 
-	public function read(){
+	public function read($id_guest_group=null){
 		$this->db->where('status_guest_group', '1');
+		if (!is_null($id_guest_group)) {
+			$this->db->where('id_guest_group', $id_guest_group);
+		}
 		$query = $this->db->get($this->table);
 		return $query->result_array();
 	}
@@ -20,6 +23,12 @@ class M_grup extends CI_Model {
 	public function create($object){
 		$create = $this->db->insert($this->table, $object);
 		return $create;
+	}
+
+	public function update($data, $id_guest_group){
+		$this->db->where('id_guest_group', $id_guest_group);
+		$result = $this->db->update($this->table, $data);
+		return $result;
 	}
 
 	public function delete($id)
