@@ -63,7 +63,7 @@ class Grup extends Admin_Controller {
 
                 if($this->m_grup->create($data)){
                 	$this->session->set_flashdata("operation", "success");
-                    $this->session->set_flashdata("message", "<strong>Pengurus</strong> berhasil ditambah");
+                    $this->session->set_flashdata("message", "<strong>Grup Tamu</strong> berhasil ditambah");
                     redirect('admin/grup');
                 } else {
                 	$data = [
@@ -131,7 +131,7 @@ class Grup extends Admin_Controller {
         $result = $this->m_grup->delete($id);
         if($result){
             $this->session->set_flashdata("operation", "success");
-            $this->session->set_flashdata("message", "<strong>Berhasil</strong> menghapus pengguna");
+            $this->session->set_flashdata("message", "<strong>Berhasil</strong> menghapus grup tamu");
         }
         else{
             $this->session->set_flashdata("operation", "danger");
