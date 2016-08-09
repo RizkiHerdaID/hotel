@@ -1,6 +1,6 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include ('Frontend_Controller.php');
-class Facilities extends Frontend_Controller {
+<?php 
+
+class Facilities extends CI_Controller {
 
 	public function __construct()
 	{

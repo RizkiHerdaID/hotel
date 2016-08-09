@@ -1,7 +1,9 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include 'Admin_Controller.php';
-class Grup extends Admin_Controller {
+<?php 
+
+class Grup extends CI_Controller {
 	
+    var $template = 'admin/template';
+    
 	private $table = 'guest_group';
 	private $pk = 'kode';
 

@@ -1,7 +1,9 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include 'Admin_Controller.php';
+<?php 
+
 class Jenis extends Admin_Controller {
 
+	var $template = 'admin/template';
+	
 	public function __construct()
 	{
 		parent::__construct();

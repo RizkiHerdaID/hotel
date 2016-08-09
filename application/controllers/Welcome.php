@@ -1,6 +1,6 @@
 <?php 
-include 'Frontend_Controller.php';
-class Welcome extends Frontend_Controller {
+
+class Welcome extends CI_Controller {
 
 	public function __construct()
 	{
@@ -17,6 +17,11 @@ class Welcome extends Frontend_Controller {
 		$this->load->view('404');
 	}
 
+	public function getTgl(){
+		$datestring = '%d/%m/%Y';
+		$time = time();
+		return mdate($datestring, $time);
+	}
 	
 }
 
