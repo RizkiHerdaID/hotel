@@ -52,6 +52,7 @@ if(isset($title)){
             $jenis_active = "active";
             break;
         case "Data Kamar":
+        case "Detail Data kamar":
             $master_active = "active";
             $kamar_active = "active";
             break;
