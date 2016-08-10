@@ -48,6 +48,8 @@ if(isset($title)){
             $tamu_active = "active";
             break;
         case "Data Jenis Kamar":
+        case "Detail Data Jenis Kamar":
+        case "Update Data Jenis Kamar":
             $master_active = "active";
             $jenis_active = "active";
             break;
