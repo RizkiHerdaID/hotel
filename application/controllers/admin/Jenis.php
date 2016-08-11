@@ -1,11 +1,8 @@
 <?php 
 
-class Jenis extends Admin_Controller {
-<<<<<<< HEAD:application/controllers/admin/Jenis.php
+class Jenis extends CI_Controller {
 
 	var $template = 'admin/template';
-=======
->>>>>>> feature/Jenis_Kamar:application/controllers/admin/jenis.php
 	
 	public function __construct()
 	{
