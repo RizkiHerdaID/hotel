@@ -58,7 +58,8 @@ if(isset($title)){
             $master_active = "active";
             $kamar_active = "active";
             break;
-        case "Makanan & Minuman":
+        case "Data Makanan & Minuman":
+        case "Update Data Makanan & Minuman":
             $master_active = "active";
             $makanan_active = "active";
             break;
