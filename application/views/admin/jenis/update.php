@@ -50,15 +50,15 @@
 						<label class="col-md-4 control-label" for="checkboxes">Fasilitas</label>
 						<div class="col-md-8">
 							<?php $i=1; foreach($facilities as $list): ?>
-							<?php if (in_array($list, $fasilitas)) { ?>
+							<?php if (in_array($list['nama'], $fasilitas)) { ?>
 							<label class="checkbox-inline" for="facilities-<?=$i?>" style="margin-right:5pt;">
-								<input type="checkbox" name="facilities[]" id="facilities-<?=$i++?>" value="<?=$list?>" checked="true">
-								<?=$list?>
+								<input type="checkbox" name="facilities[]" id="facilities-<?=$i++?>" value="<?=$list['nama']?>" checked="true">
+								<?=$list['nama']?>
 							</label>
 							<?php } else { ?>
 							<label class="checkbox-inline" for="facilities-<?=$i?>" style="margin-right:5pt;">
-								<input type="checkbox" name="facilities[]" id="facilities-<?=$i++?>" value="<?=$list?>" >
-								<?=$list?>
+								<input type="checkbox" name="facilities[]" id="facilities-<?=$i++?>" value="<?=$list['nama']?>" >
+								<?=$list['nama']?>
 							</label>
 							<?php } ?>
 							<?php endforeach; ?>

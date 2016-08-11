@@ -8,6 +8,7 @@ class Jenis extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_jenis');
+        $this->load->model('m_jasa');
 	}
 
 	public function index()
@@ -18,7 +19,7 @@ class Jenis extends CI_Controller {
 			'content' => 'admin/jenis/index',
 			'jenis' => $this->m_jenis->read(),
 			'tahun' => $this->getTahun(),
-			'facilities' => $facilities
+			'facilities' => $this->m_jasa->read_jk()
 		];
 		$this->load->view($this->template, $data);
 	}
@@ -39,7 +40,7 @@ class Jenis extends CI_Controller {
             'content' => 'admin/jenis/update',
             'jenis' => $this->m_jenis->read($id),
             'tahun' => $this->getTahun(),
-            'facilities' => $facilities
+            'facilities' => $this->m_jasa->read_jk()
         ];
         $this->load->view($this->template, $data);
     }    

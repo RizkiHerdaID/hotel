@@ -62,7 +62,8 @@ if(isset($title)){
             $master_active = "active";
             $makanan_active = "active";
             break;
-        case "Jasa Lainnya":
+        case "Data Jasa":
+        case "Update Data Jasa":
             $master_active = "active";
             $jasa_active = "active";
             break;
@@ -131,7 +132,7 @@ MAIN SIDEBAR MENU
           <li class="<?= $jenis_active ?>"><a  href="<?php echo site_url('admin/jenis') ?>">Data Jenis Kamar</a></li>
           <li class="<?= $kamar_active ?>"><a  href="<?php echo site_url('admin/kamar') ?>">Data Kamar</a></li>
           <li class="<?= $makanan_active ?>"><a  href="<?php echo site_url('admin/makanan') ?>">Makanan & Minuman</a></li>
-          <li class="<?= $jasa_active ?>"><a  href="jasa">Jasa Lainnya</a></li>
+          <li class="<?= $jasa_active ?>"><a  href="<?php echo site_url('admin/jasa') ?>">Jasa Lainnya</a></li>
         </ul>
       </li>
       <li class="sub-menu">

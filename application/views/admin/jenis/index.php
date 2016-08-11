@@ -86,8 +86,8 @@
 								<div class="col-md-8">
 									<?php $i=1; foreach($facilities as $list): if($i>3) echo '<br/>';?>
 									<label class="checkbox-inline" for="facilities-<?=$i?>" style="margin-right:1pt;">
-										<input type="checkbox" name="facilities[]" id="facilities-<?=$i++?>" value="<?=$list?>">
-										<?=$list?>
+										<input type="checkbox" name="facilities[]" id="facilities-<?=$i++?>" value="<?=$list['nama']?>">
+										<?=$list['nama']?>
 									</label>
 									<?php endforeach; ?>
 								</div>
