@@ -20,16 +20,27 @@ class M_kamar extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
 	public function create($object){
 		$create = $this->db->insert($this->table, $object);
 		return $create;
 	}
+
 	public function delete($id)
 	{
-	$data = array('active' => '0');
-	$result = $this->db->update($this->table, $data, array($this->pk => $id));
-	return $result;
-}
+		$data = array('active' => '0');
+		$result = $this->db->update($this->table, $data, array($this->pk => $id));
+		return $result;
+	}
+
+	public function read_book($idclass){
+		$this->db->select('*');
+		$this->db->from('rooms');
+		$this->db->where('idclass', $idclass);
+		$this->db->where('status', '0');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }
 /* End of file m_kamar.php */
 /* Location: ./application/models/m_kamar.php */

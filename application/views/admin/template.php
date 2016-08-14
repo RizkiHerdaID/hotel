@@ -12,6 +12,7 @@
     <!--external css-->
     <link href="<?php echo base_url('assets_ad/') ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>lineicons/style.css">
     
@@ -72,7 +73,6 @@
       </section>
     </section>
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.js"></script>
     <script src="<?php echo base_url('assets_ad/') ?>/js/jquery-1.8.3.min.js"></script>
     <script src="<?php echo base_url('assets_ad/') ?>/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="<?php echo base_url('assets_ad/') ?>/js/jquery.dcjqaccordion.2.7.js"></script>

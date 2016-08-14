@@ -69,15 +69,16 @@ if(isset($title)){
             $jasa_active = "active";
             break;
 
-        case "Booking":
+        case "Data Booking":
+        case "Tambah Data Booking":
             $registrasi_active = "active";
             $booking_active = "active";
             break;
-        case "Check-in & Check-out":
+        case "Data Check-in & Check-out":
             $registrasi_active = "active";
             $check_active = "active";
             break;
-        case "Approval":
+        case "Data Approval":
             $registrasi_active = "active";
             $approval_active = "active";
             break;
@@ -137,19 +138,19 @@ MAIN SIDEBAR MENU
         </ul>
       </li>
       <li class="sub-menu">
-        <a href="javascript:;" >
-          <i class="fa fa-cogs <?= $registrasi_active ?>"></i>
+        <a href="javascript:;" class="<?= $registrasi_active ?>">
+          <i class="fa fa-cogs"></i>
           <span>Registrasi</span>
         </a>
         <ul class="sub">
-          <li class="<?= $booking_active ?>"><a  href="#">Booking Kamar</a></li>
+          <li class="<?= $booking_active ?>"><a  href="<?php echo site_url('admin/booking') ?>">Booking Kamar</a></li>
           <li class="<?= $check_active ?>"><a  href="#">Check-in / Check-out</a></li>
           <li class="<?= $approval_active ?>"><a  href="#">Approval</a></li>
         </ul>
       </li>
       <li class="sub-menu">
-        <a href="javascript:;" >
-          <i class="fa fa-book <?= $transaksi_active ?>"></i>
+        <a href="javascript:;" class="<?= $transaksi_active ?>">
+          <i class="fa fa-book"></i>
           <span>Transaksi</span>
         </a>
         <ul class="sub">
@@ -158,8 +159,8 @@ MAIN SIDEBAR MENU
         </ul>
       </li>
       <li class="sub-menu">
-        <a href="javascript:;" >
-          <i class="fa fa-tasks <?= $laporan_active ?>"></i>
+        <a href="javascript:;" class="<?= $laporan_active ?>">
+          <i class="fa fa-tasks"></i>
           <span>Laporan</span>
         </a>
         <ul class="sub">

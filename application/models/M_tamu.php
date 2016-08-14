@@ -40,6 +40,24 @@ class M_tamu extends CI_Model {
     	$result = $this->db->update($this->table, $data, array('id' => $id));
     	return $result;
     }
+
+    public function readTamu($no_ktp){
+		$this->db->select('*');
+		$this->db->join('guest_group', $this->table.'.kode_grup = '.$this->join.'.id_guest_group');
+		$this->db->where('no_ktp', $no_ktp);
+		$this->db->from($this->table);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	 public function readTop(){
+		$this->db->select('id');
+		$this->db->order_by('id', 'desc');
+		$this->db->limit(1);
+		$this->db->from($this->table);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }
 
 /* End of file m_tamu */
