@@ -41,6 +41,16 @@ class M_kamar extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	public function read_room($idclass){
+		$this->db->select('*');
+		$this->db->from('rooms');
+		$this->db->join('class', 'rooms.idclass = class.idclass');
+		$this->db->where('rooms.status', 0);
+		$this->db->where('rooms.idclass', $idclass);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }
 /* End of file m_kamar.php */
 /* Location: ./application/models/m_kamar.php */

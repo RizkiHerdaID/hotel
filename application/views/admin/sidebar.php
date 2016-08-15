@@ -71,10 +71,13 @@ if(isset($title)){
 
         case "Data Booking":
         case "Tambah Data Booking":
+        case "Booking - Cari Tamu":
             $registrasi_active = "active";
             $booking_active = "active";
             break;
         case "Data Check-in & Check-out":
+        case "Tambah Data Check-in":
+        case "Check-in - Cari Tamu":
             $registrasi_active = "active";
             $check_active = "active";
             break;
@@ -144,7 +147,7 @@ MAIN SIDEBAR MENU
         </a>
         <ul class="sub">
           <li class="<?= $booking_active ?>"><a  href="<?php echo site_url('admin/booking') ?>">Booking Kamar</a></li>
-          <li class="<?= $check_active ?>"><a  href="#">Check-in / Check-out</a></li>
+          <li class="<?= $check_active ?>"><a  href="<?php echo site_url('admin/check') ?>">Check-in / Check-out</a></li>
           <li class="<?= $approval_active ?>"><a  href="#">Approval</a></li>
         </ul>
       </li>
@@ -154,7 +157,7 @@ MAIN SIDEBAR MENU
           <span>Transaksi</span>
         </a>
         <ul class="sub">
-          <li class="<?= $pembayaran_active ?>"><a  href="#">Pembayaran</a></li>
+          <li class="<?= $pembayaran_active ?>"><a  href="<?php echo site_url('admin/pembayaran') ?>">Pembayaran</a></li>
           <li class="<?= $piutang_active ?>"><a  href="#">Piutang</a></li>
         </ul>
       </li>

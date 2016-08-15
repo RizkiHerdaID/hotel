@@ -45,6 +45,8 @@ class M_tamu extends CI_Model {
 		$this->db->select('*');
 		$this->db->join('guest_group', $this->table.'.kode_grup = '.$this->join.'.id_guest_group');
 		$this->db->where('no_ktp', $no_ktp);
+		$this->db->order_by('id', 'desc');
+		$this->db->limit(1);
 		$this->db->from($this->table);
 		$query = $this->db->get();
 		return $query->result_array();
