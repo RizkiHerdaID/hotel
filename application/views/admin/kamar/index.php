@@ -69,9 +69,9 @@
 				<div class="panel-body">
                     
                     <!-- alert -->
-                    <?php if($this->session->flashdata('operation') != NULL){ ?>
-                        <div class="alert alert-<?=$this->session->flashdata('operation')?>" role="alert">
-                            <p><?=$this->session->flashdata('message'); ?></p>
+                    <?php if($this->session->flashdata('errors') != NULL){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p><?=$this->session->flashdata('errors'); ?></p>
                         </div>
                     <?php } ?>
                     <!-- end of alert -->

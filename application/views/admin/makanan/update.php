@@ -3,6 +3,15 @@
 	<div class="panel panel-warning">
 		<div class="panel-heading"><h4><?=$title?></h4></div>
 		<div class="panel-body">
+                    
+                    <!-- alert -->
+                    <?php if($this->session->flashdata('errors') != NULL){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p><?=$this->session->flashdata('errors'); ?></p>
+                        </div>
+                    <?php } ?>
+                    <!-- end of alert -->
+                    
 			<form action="<?=site_url('admin/makanan/update')?>" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
 				<fieldset>
 				<input id="foodname" value="<?=$list['id_food']?>" name="id" hidden />

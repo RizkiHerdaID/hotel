@@ -8,6 +8,15 @@
 		<div class="panel panel-warning">
 			<div class="panel-heading"><h4><?=$title?></h4></div>
 			<div class="panel-body">
+                    
+                    <!-- alert -->
+                    <?php if($this->session->flashdata('errors') != NULL){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p><?=$this->session->flashdata('errors'); ?></p>
+                        </div>
+                    <?php } ?>
+                    <!-- end of alert -->
+                    
 				<fieldset>
 					<input id="idclass" name="idclass" type="text" placeholder="" value="<?=$list['idclass']?>" hidden />
 					<div class="form-group">

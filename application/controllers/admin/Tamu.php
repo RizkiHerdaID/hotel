@@ -60,10 +60,7 @@ class Tamu extends CI_Controller {
           	if ($this->form_validation->run() == FALSE)
             {
             	//ERROR
-                $data = [
-                    "operation" => "warning",
-                    "message" => validation_errors()
-                ];
+               $this->session->set_flashdata("errors", validation_errors());
             } 
             else 
             {
@@ -123,10 +120,7 @@ class Tamu extends CI_Controller {
           	if ($this->form_validation->run() == FALSE)
             {
             	//ERROR
-                $data = [
-                    "operation" => "warning",
-                    "message" => validation_errors()
-                ];
+                $this->session->set_flashdata("errors", validation_errors());
             } 
             else 
             {

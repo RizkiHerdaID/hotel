@@ -45,6 +45,15 @@
 		<div class="panel panel-warning">
 			<div class="panel-heading"><h4>Tambah Pengguna Admin</h4></div>
 			<div class="panel-body">
+                    
+                    <!-- alert -->
+                    <?php if($this->session->flashdata('errors') != NULL){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p><?=$this->session->flashdata('errors'); ?></p>
+                        </div>
+                    <?php } ?>
+                    <!-- end of alert -->
+                    
 				<!-- Alert -->
 				<?php if(isset($operation)){ ?>
 				<div class="alert alert-<?=$operation?>" role="alert">

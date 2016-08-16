@@ -49,11 +49,7 @@ class Grup extends CI_Controller {
             $this->form_validation->set_rules('diskon', 'Nama Depan', 'trim|required|is_natural');
           	if ($this->form_validation->run() == FALSE)
             {
-            	//ERROR
-                $data = [
-                    "operation" => "warning",
-                    "message" => validation_errors()
-                ];
+            	$this->session->set_flashdata("errors", validation_errors());
             } 
             else 
             {
@@ -94,10 +90,7 @@ class Grup extends CI_Controller {
             if ($this->form_validation->run() == FALSE)
             {
                 //ERROR
-                $data = [
-                    "operation" => "warning",
-                    "message" => validation_errors()
-                ];
+                $this->session->set_flashdata("errors", validation_errors());
             } 
             else 
             {

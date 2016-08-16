@@ -3,6 +3,15 @@
     <div class="panel panel-warning">
       <div class="panel-heading"><h4><?=$title?></h4></div>
       <div class="panel-body">
+                    
+                    <!-- alert -->
+                    <?php if($this->session->flashdata('errors') != NULL){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p><?=$this->session->flashdata('errors'); ?></p>
+                        </div>
+                    <?php } ?>
+                    <!-- end of alert -->
+                    
         <?php foreach($detail as $list): ?>
         <fieldset>
           <input id="userid" maxlength="30" name="userid" type="text" value="<?= $list['user_id'] ?>" hidden/>

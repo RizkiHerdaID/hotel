@@ -45,6 +45,15 @@
 			<div class="panel panel-warning">
 				<div class="panel-heading"><h4>Tambah Jenis Kamar</h4></div>
 				<div class="panel-body">
+                    
+                    <!-- alert -->
+                    <?php if($this->session->flashdata('errors') != NULL){ ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p><?=$this->session->flashdata('errors'); ?></p>
+                        </div>
+                    <?php } ?>
+                    <!-- end of alert -->
+                    
 					<form action="<?=site_url('admin/jenis/create')?>" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
 						<fieldset>
 							<!-- Text input-->
