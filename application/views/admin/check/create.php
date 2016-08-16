@@ -209,8 +209,8 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="jenis">Jenis Kamar</label>
 								<div class="col-md-8">
-									<select id="jenis" name="jenis" class="form-control">
-										<option value="">--Pilih--</option>
+									<select id="jenis" name="jenis" class="form-control" onchange="select()">
+										<option value="">----Pilih Jenis Kamar----</option>
 										<?php foreach($jenis as $list): ?>
 										<?php if($this->session->flashdata('jenis') != NULL){
 											$tmp = $this->session->flashdata('jenis');
@@ -234,12 +234,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="check-in">Check-in</label>
-								<div class="col-md-8">
-									<input type="date" name="check-in" id="check-in" class="form-control" value="<?php echo date('d/m/Y'); ?>" required="required" title="">
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-md-4 control-label" for="check-out">Check-out</label>
 								<div class="col-md-8">
 									<input type="date" name="check-out" id="check-out" class="form-control" value="<?php echo date('d/m/Y'); ?>" required="required" title="">
@@ -248,7 +242,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Submit"></label>
 								<div class="col-md-4">
-									<button id="Submit" name="Submit" class="btn btn-warning">Simpan</button>
+									<button id="Submit" name="Submit" class="btn btn-warning">Check-in</button>
 								</div>
 							</div>
 						</div>
@@ -259,16 +253,14 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function(){
-		$("#jenis").change(function(){
-			var idclass = $("$jenis").val();
-			$.ajax({
+	function select() {
+		var idclass = $('#jenis').find(":selected").val();
+		$.ajax({
 				type : "GET",
 				url  : "<?=site_url('admin/check/get_room?idclass=')?>"+idclass,
 				success: function(data){
 					$("#kamar").html(data);
 				}
-			});
 		});
-	});
+	}
 </script>

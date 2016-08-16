@@ -21,6 +21,7 @@
 					<tbody>
 						<?php $no = 1; ?>
 						<?php foreach($tamu as $list): ?>
+						<?php if($list['check'] == 0){ ?>
 						<tr>
 							<td><?=$no++?></td>
 							<td><?=$list['no_ktp']?></td>
@@ -33,7 +34,7 @@
 								<button class="btn btn-success btn-sm" onclick="pilihData('<?=$list["no_ktp"]?>')">Pilih</button>
 							</td>
 						</tr>
-						<?php endforeach; ?>
+						<?php } endforeach; ?>
 					</tbody>
 				</table>
 			</div>

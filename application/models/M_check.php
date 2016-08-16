@@ -24,6 +24,44 @@ class M_check extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	public function create($data){
+		$this->db->trans_start();
+		
+		$this->db->insert($this->table, $data);
+
+		$this->db->set('guest_id', $data['guest_id']);
+		$this->db->set('status', '1');
+		$this->db->where('idrooms', $data['idrooms']);
+		$this->db->update('rooms');
+
+		$this->db->set('check', '1');
+		$this->db->where('id', $data['guest_id']);
+		$this->db->update('guest');
+
+		$idTop = $this->readTop();
+		foreach ($idTop as $list) {
+			$id = (string) $list['order_id'];
+			$guest_id = (string) $list['guest_id'];
+		}
+		$kwitansi = 'KW'.$guest_id .rand ( 10 , 99 ) .'-'.rand ( 1000 , 9999 );
+		$this->db->set('order_id', $id);
+		$this->db->set('kwitansi', $kwitansi);
+		$this->db->insert('payment');
+		
+		$this->db->trans_complete();
+		$status =  $this->db->trans_status();
+		return $status;
+	}
+
+	 public function readTop(){
+		$this->db->select('*');
+		$this->db->order_by('order_id', 'desc');
+		$this->db->limit(1);
+		$this->db->from($this->table);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }
 
 /* End of file M_check.php */
