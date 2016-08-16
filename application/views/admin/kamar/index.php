@@ -67,13 +67,22 @@
 			<div class="panel panel-warning">
 				<div class="panel-heading"><h4>Tambah <?=$title?></h4></div>
 				<div class="panel-body">
+                    
+                    <!-- alert -->
+                    <?php if($this->session->flashdata('operation') != NULL){ ?>
+                        <div class="alert alert-<?=$this->session->flashdata('operation')?>" role="alert">
+                            <p><?=$this->session->flashdata('message'); ?></p>
+                        </div>
+                    <?php } ?>
+                    <!-- end of alert -->
+                    
 					<form action="<?=site_url('admin/kamar/create')?>" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
 						<fieldset>
 							<!-- Text input-->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="no_room">Nomor Kamar	</label>
 								<div class="col-md-8">
-									<input id="no_room" maxlength="5" name="no_room" type="text" placeholder="" class="form-control input-md" required="">
+									<input id="no_room" name="no_room" type="text" placeholder="" class="form-control input-md">
 									
 								</div>
 							</div>
