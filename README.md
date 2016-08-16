@@ -1,2 +1,2 @@
-# hotel
+# HOTEL
 Hotel Project
