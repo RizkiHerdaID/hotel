@@ -38,11 +38,8 @@ class Kamar extends CI_Controller {
             $this->form_validation->set_rules('jenis', 'Jenis Kamar', 'trim|required|is_natural');
           	if ($this->form_validation->run() == FALSE)
             {
-            	//ERROR
-                $data = [
-                    "operation" => "warning",
-                    "message" => validation_errors()
-                ];
+                $this->session->set_flashdata("operation", "warning");
+                $this->session->set_flashdata("message", validation_errors());
             } 
             else 
             {
