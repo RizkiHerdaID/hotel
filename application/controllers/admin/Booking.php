@@ -21,16 +21,16 @@ class Booking extends CI_Controller {
 		$this->load->view($this->template, $data);
 	}
 
-	public function viewCreate($no_ktp=null)
+	public function viewCreate($id=null)
 	{
-		if (!is_null($no_ktp)) {
+		if (!is_null($id)) {
 			$data = [
 			'title' => 'Tambah Data Booking',
 			'content' => 'admin/booking/create',
 			'grup' => $this->m_grup->read(),
 			'jenis' => $this->m_jenis->read(),
 			'tgl' => $this->getTgl(),
-			'tamu' => $this->m_tamu->readTamu($no_ktp)
+			'tamu' => $this->m_tamu->readTamu($id)
 		];
 		} else {
 			$data = [
@@ -42,6 +42,12 @@ class Booking extends CI_Controller {
 		];
 		}
 		$this->load->view($this->template, $data);
+	}
+
+	public function getTgl(){
+		$datestring = '%d/%m/%Y';
+		$time = time();
+		return mdate($datestring, $time);
 	}
 
 	public function create(){
@@ -68,8 +74,8 @@ class Booking extends CI_Controller {
                     "operation" => "warning",
                     "message" => validation_errors()
                 ];
-	            } 
-	            else 
+	            }
+	            else
 	            {
 	            	$data = [
 	                    'no_ktp' => $this->input->post('ktp'),
@@ -139,13 +145,27 @@ class Booking extends CI_Controller {
 			$data = [
 			'title' => 'Tambah Data Booking',
 			'content' => 'admin/booking/create',
-			'jenis' => $this->m_jenis->read(),	
+			'jenis' => $this->m_jenis->read(),
 			'tgl' => $this->getTgl(),
 			'grup' => $this->m_grup->read()
 		];
 		}
         $this->load->view($this->template, $data);
 	}
+
+    public function delete($id)
+    {
+        $result = $this->m_booking->delete($id);
+        if($result){
+            $this->session->set_flashdata("operation", "success");
+            $this->session->set_flashdata("message", "<strong>Berhasil</strong> menghapus pengguna");
+        }
+        else{
+            $this->session->set_flashdata("operation", "danger");
+            $this->session->set_flashdata("message", "<strong>Gagal</strong> Terjadi kesalah sistem.");
+        }
+        redirect("admin/booking");
+    }
 
 	public function cariTamu()
 	{
@@ -155,12 +175,6 @@ class Booking extends CI_Controller {
 			'tamu' => $this->m_tamu->read()
 		];
 		$this->load->view($this->template, $data);
-	}
-
-	public function getTgl(){
-		$datestring = '%d/%m/%Y';
-		$time = time();
-		return mdate($datestring, $time);
 	}
 }
 /* End of file Booking.php */

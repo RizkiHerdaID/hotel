@@ -23,10 +23,18 @@ class M_booking extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+	
 	public function create($data){
 		$query = $this->db->insert($this->table, $data);
 		return $query;
 	}
+
+    public function delete($id)
+    {
+        $query = $this->db->delete($this->table, array('booking_id' => $id));
+        return $query;
+    }
+	
 }
 
 /* End of file M_booking.php */
