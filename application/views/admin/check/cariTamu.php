@@ -31,7 +31,7 @@
 							<td><?=$list['nama']?></td>
 							<td><?php if($list['diskon']>0){ echo $list['diskon']; echo ' %';} else { echo '-'; }?></td>
 							<td>
-								<button class="btn btn-success btn-sm" onclick="pilihData('<?=$list["no_ktp"]?>')">Pilih</button>
+								<button class="btn btn-success btn-sm" onclick="pilihData('<?=$list["id"]?>')">Pilih</button>
 							</td>
 						</tr>
 						<?php } endforeach; ?>

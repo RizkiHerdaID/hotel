@@ -53,6 +53,76 @@ class M_check extends CI_Model {
 		$status =  $this->db->trans_status();
 		return $status;
 	}
+	
+	public function check_out($order_id){
+		$total = 0;
+		$order = array();
+		$class = array();
+		$this->db->trans_start();
+
+		$this->db->set('order_status', '3');
+		$this->db->where('order_id', $order_id);
+		$this->db->update($this->table);
+
+		$this->db->select('*');
+		$this->db->from($this->table);
+		$this->db->where('order_id', $order_id);
+		$order = $this->db->get()->result_array();
+
+		foreach ($order as $list){
+			$this->db->select('*');
+			$this->db->from('class');
+			$this->db->where('idclass', $list['class_id']);
+			$class = $this->db->get()->result_array();
+		}
+
+		foreach ($class as $list){
+			$total += $list['price'];
+		}
+
+		$this->db->set('payment_total', $total);
+		$this->db->where('order_id', $order_id);
+		$this->db->update($this->table);
+
+		$this->db->set('payment_date', date('Y-m-d H:i:s'));
+		$this->db->where('order_id', $order_id);
+		$this->db->update('payment');
+
+		$this->db->trans_complete();
+		$status =  $this->db->trans_status();
+		return $status;
+	}
+
+	public function check_in($order_id)
+	{
+		$this->db->set('order_status', '2');
+		$this->db->where('order_id', $order_id);
+		$result = $this->db->update($this->table);
+		return $result;
+	}
+
+	public function bayar($order_id)
+	{
+		$this->db->set('order_status', '4');
+		$this->db->where('order_id', $order_id);
+		$result = $this->db->update($this->table);
+		return $result;
+	}
+
+	public function delete($order_id)
+	{
+		$this->db->where('order_id', $order_id);
+		$result = $this->db->delete('order');
+		return $result;
+	}
+
+	 public function order($order_id){
+		$this->db->select('*');
+		$this->db->where('order_id', $order_id);
+		$this->db->from($this->table);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 
 	 public function readTop(){
 		$this->db->select('*');
