@@ -2,7 +2,7 @@
 	<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 		<div class="panel panel-warning">
 			<!-- Default panel contents -->
-			<div class="panel-heading"><h4>Daftar Pengguna & Hak Akses</h4></div>
+			<div class="panel-heading"><h4><?=$title?></h4></div>
 			<!-- alert -->
 			<?php if($this->session->flashdata('operation') != NULL){ ?>
 			<div class="alert alert-<?=$this->session->flashdata('operation')?>" role="alert">

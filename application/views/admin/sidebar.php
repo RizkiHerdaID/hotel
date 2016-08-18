@@ -29,7 +29,7 @@ if(isset($title)){
         case "Dashboard":
             $dashboard_active = "active";
             break;
-        case "Data Hak Akses":
+        case "Daftar Pengguna & Hak Akses":
         case "Detail Pengurus & Hak Akses":
         case 'Update Data Pengurus & Hak Akses':
             $master_active = "active";
@@ -81,7 +81,7 @@ if(isset($title)){
             $registrasi_active = "active";
             $check_active = "active";
             break;
-        case "Data Approval":
+        case "Approval":
             $registrasi_active = "active";
             $approval_active = "active";
             break;
@@ -148,7 +148,7 @@ MAIN SIDEBAR MENU
         <ul class="sub">
           <li class="<?= $booking_active ?>"><a  href="<?php echo site_url('admin/booking') ?>">Booking Kamar</a></li>
           <li class="<?= $check_active ?>"><a  href="<?php echo site_url('admin/check') ?>">Check-in / Check-out</a></li>
-          <li class="<?= $approval_active ?>"><a  href="#">Approval</a></li>
+          <li class="<?= $approval_active ?>"><a  href="<?php echo site_url('admin/approval') ?>">Approval</a></li>
         </ul>
       </li>
       <li class="sub-menu">
