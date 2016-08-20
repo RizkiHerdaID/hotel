@@ -63,7 +63,7 @@ class Check extends CI_Controller {
 	}
 
 	public function getTgl(){
-		$datestring = '%d/%m/%Y';
+        $datestring = '%Y-%m-%d';
 		$time = time();
 		return mdate($datestring, $time);
 	}
@@ -71,6 +71,7 @@ class Check extends CI_Controller {
 	public function create(){
 		$id = $this->input->post('id');
 		$no_ktp = $this->input->post('no_ktp');
+        $booking_id = $this->input->post('booking_id');
 		if($this->input->server('REQUEST_METHOD') == "POST")
 		{
 			$this->form_validation->set_rules('ktp', 'KTP', 'trim|required|min_length[8]|max_length[30]');
@@ -122,12 +123,17 @@ class Check extends CI_Controller {
 							'guest_id' => $id,
 							'class_id' => $class_id,
 							'idrooms' => $room,
+                            'tgl_order' => $this->getTgl(),
+                            'check_in' => $this->getTgl(),
 							'check_out' => $this->input->post('check-out')
 						];
 						if ($this->m_check->create($data)) {
+						    if (!is_null($booking_id)){
+						        $this->m_booking->delete($booking_id);
+                            }
 							$this->session->set_flashdata("operation", "success");
-							$this->session->set_flashdata("message", "<strong>Data check</strong> berhasil ditambah");
-							redirect('admin/check');
+							$this->session->set_flashdata("message", "<strong>Data check</strong> berhasil ditambah.<br> Silahkan Approve / Reject terlebih dahulu sebelum check-in dari Menu Approval.");
+							redirect('admin/approval');
 						}
 					}
 				} else {
@@ -141,12 +147,17 @@ class Check extends CI_Controller {
 						'guest_id' => $id_guest,
 						'class_id' => $class_id,
 						'idrooms' => $room,
+                        'tgl_order' => $this->getTgl(),
+                        'check_in' => $this->getTgl(),
 						'check_out' => $this->input->post('check-out')
 					];
 					if ($this->m_check->create($data)) {
+                        if (!is_null($booking_id)){
+                            $this->m_booking->delete($booking_id);
+                        }
 						$this->session->set_flashdata("operation", "success");
-						$this->session->set_flashdata("message", "<strong>Data check</strong> berhasil ditambah");
-						redirect('admin/check');
+						$this->session->set_flashdata("message", "<strong>Data check</strong> berhasil ditambah.<br> Silahkan Approve / Reject terlebih dahulu sebelum check-in dari Menu Approval.");
+						redirect('admin/approval');
 					}
 
 				}

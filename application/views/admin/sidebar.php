@@ -24,8 +24,8 @@ $laporan_active = "";
 $keuangan_active = "";
 $daftar_tamu_active = "";
 
-if(isset($title)){
-    switch($title){
+if (isset($title)) {
+    switch ($title) {
         case "Dashboard":
             $dashboard_active = "active";
             break;
@@ -39,7 +39,7 @@ if(isset($title)){
         case 'Data Detail Grup Tamu':
         case 'Update Data Grup Tamu':
             $master_active = "active";
-            $grup_active = "active" ;
+            $grup_active = "active";
             break;
         case "Data Tamu":
         case "Detail Data Tamu":
@@ -103,7 +103,7 @@ if(isset($title)){
             $laporan_active = "active";
             $daftar_tamu_active = "active";
             break;
-  }
+    }
 }
 
 ?>
@@ -112,67 +112,76 @@ MAIN SIDEBAR MENU
 *********************************************************************************************************************************************************** -->
 <!--sidebar start-->
 <aside>
-  <div id="sidebar"  class="nav-collapse ">
-    <!-- sidebar menu start-->
-    <ul class="sidebar-menu" id="nav-accordion">
-      
-      <p class="centered"><a href="profile.html"><img src="<?php echo base_url('images/') ?>ui-sam.jpg" class="img-circle" width="60"></a></p>
-      <h5 class="centered">Rizki Herdatullah</h5>
-      
-      <li class="mt">
-        <a class="<?= $dashboard_active ?>" href="<?php echo site_url('admin/Dashboard') ?>">
-          <i class="fa fa-dashboard"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;" class="<?= $master_active ?>">
-          <i class="fa fa-desktop"></i>
-          <span>Data Master</span>
-        </a>
-        <ul class="sub">
-          <li class="<?= $hak_akses_active ?>"><a href="<?php echo site_url('admin/hakAkses') ?>">Data Hak Akses</a></li>
-          <li class="<?= $grup_active ?>"><a  href="<?php echo site_url('admin/grup') ?>">Data Grup Tamu</a></li>
-          <li class="<?= $tamu_active ?>"><a  href="<?php echo site_url('admin/tamu') ?>">Data Tamu</a></li>
-          <li class="<?= $jenis_active ?>"><a  href="<?php echo site_url('admin/jenis') ?>">Data Jenis Kamar</a></li>
-          <li class="<?= $kamar_active ?>"><a  href="<?php echo site_url('admin/kamar') ?>">Data Kamar</a></li>
-          <li class="<?= $makanan_active ?>"><a  href="<?php echo site_url('admin/makanan') ?>">Makanan & Minuman</a></li>
-          <li class="<?= $jasa_active ?>"><a  href="<?php echo site_url('admin/jasa') ?>">Jasa Lainnya</a></li>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+
+            <p class="centered"><a href="profile.html"><img src="<?php echo base_url('images/') ?>ui-sam.jpg"
+                                                            class="img-circle" width="60"></a></p>
+            <h5 class="centered">Rizki Herdatullah</h5>
+
+            <li class="mt">
+                <a class="<?= $dashboard_active ?>" href="<?php echo site_url('admin/Dashboard') ?>">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?= $master_active ?>">
+                    <i class="fa fa-desktop"></i>
+                    <span>Data Master</span>
+                </a>
+                <ul class="sub">
+                    <li class="<?= $hak_akses_active ?>"><a href="<?php echo site_url('admin/hakAkses') ?>">Data Hak
+                            Akses</a></li>
+                    <li class="<?= $grup_active ?>"><a href="<?php echo site_url('admin/grup') ?>">Data Grup Tamu</a>
+                    </li>
+                    <li class="<?= $tamu_active ?>"><a href="<?php echo site_url('admin/tamu') ?>">Data Tamu</a></li>
+                    <li class="<?= $jenis_active ?>"><a href="<?php echo site_url('admin/jenis') ?>">Data Jenis
+                            Kamar</a></li>
+                    <li class="<?= $kamar_active ?>"><a href="<?php echo site_url('admin/kamar') ?>">Data Kamar</a></li>
+                    <li class="<?= $makanan_active ?>"><a href="<?php echo site_url('admin/makanan') ?>">Makanan &
+                            Minuman</a></li>
+                    <li class="<?= $jasa_active ?>"><a href="<?php echo site_url('admin/jasa') ?>">Jasa Lainnya</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?= $registrasi_active ?>">
+                    <i class="fa fa-cogs"></i>
+                    <span>Registrasi</span>
+                </a>
+                <ul class="sub">
+                    <li class="<?= $booking_active ?>"><a href="<?php echo site_url('admin/booking') ?>">Booking
+                            Kamar</a></li>
+                    <li class="<?= $check_active ?>"><a href="<?php echo site_url('admin/check') ?>">Check-in /
+                            Check-out</a></li>
+                    <li class="<?= $approval_active ?>"><a href="<?php echo site_url('admin/approval') ?>">Approval</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?= $transaksi_active ?>">
+                    <i class="fa fa-book"></i>
+                    <span>Transaksi</span>
+                </a>
+                <ul class="sub">
+                    <li class="<?= $pembayaran_active ?>"><a href="<?php echo site_url('admin/pembayaran') ?>">Pembayaran</a>
+                    </li>
+                    <li class="<?= $piutang_active ?>"><a href="#">Piutang</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="<?= $laporan_active ?>">
+                    <i class="fa fa-tasks"></i>
+                    <span>Laporan</span>
+                </a>
+                <ul class="sub">
+                    <li class="<?= $keuangan_active ?>"><a href="#">Laporan Keuangan</a></li>
+                    <li class="<?= $daftar_tamu_active ?>"><a href="#">Laporan Daftar Tamu</a></li>
+                </ul>
+            </li>
         </ul>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;" class="<?= $registrasi_active ?>">
-          <i class="fa fa-cogs"></i>
-          <span>Registrasi</span>
-        </a>
-        <ul class="sub">
-          <li class="<?= $booking_active ?>"><a  href="<?php echo site_url('admin/booking') ?>">Booking Kamar</a></li>
-          <li class="<?= $check_active ?>"><a  href="<?php echo site_url('admin/check') ?>">Check-in / Check-out</a></li>
-          <li class="<?= $approval_active ?>"><a  href="<?php echo site_url('admin/approval') ?>">Approval</a></li>
-        </ul>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;" class="<?= $transaksi_active ?>">
-          <i class="fa fa-book"></i>
-          <span>Transaksi</span>
-        </a>
-        <ul class="sub">
-          <li class="<?= $pembayaran_active ?>"><a  href="<?php echo site_url('admin/pembayaran') ?>">Pembayaran</a></li>
-          <li class="<?= $piutang_active ?>"><a  href="#">Piutang</a></li>
-        </ul>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;" class="<?= $laporan_active ?>">
-          <i class="fa fa-tasks"></i>
-          <span>Laporan</span>
-        </a>
-        <ul class="sub">
-          <li  class="<?= $keuangan_active ?>"><a  href="#">Laporan Keuangan</a></li>
-          <li  class="<?= $daftar_tamu_active ?>"><a  href="#">Laporan Daftar Tamu</a></li>
-        </ul>
-      </li>
-    </ul>
-    <!-- sidebar menu end-->
-  </div>
+        <!-- sidebar menu end-->
+    </div>
 </aside>
 <!--sidebar end-->

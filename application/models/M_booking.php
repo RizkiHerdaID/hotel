@@ -26,6 +26,10 @@ class M_booking extends CI_Model {
 	
 	public function create($data){
 		$query = $this->db->insert($this->table, $data);
+
+        $this->db->set('check', '1');
+        $this->db->where('id', $data['id_guest']);
+        $this->db->update('guest');
 		return $query;
 	}
 

@@ -40,6 +40,11 @@ class M_approve extends CI_Model
         $this->db->set('order_status', '-1');
         $this->db->where('order_id', $order_id);
         $result = $this->db->update($this->table);
+        foreach ($result as $list) {
+            $this->db->set('check', '0');
+            $this->db->where('id', $list['guest_id']);
+            $result = $this->db->update('guest');
+        }
         return $result;
     }
 }

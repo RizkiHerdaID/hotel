@@ -39,25 +39,26 @@
 					</thead>
 					<tbody>
 					<?php foreach($bayar as $list): ?>
+						<?php if($list['order_status'] >= 2){ ?>
 						<tr>
 							<td><?=$list['kwitansi']?></td>
 							<td><?=$list['nama_depan'].' '.$list['nama_belakang']?></td>
 							<td><?=$list['title']?></td>
 							<td><?=$list['numbers']?></td>
-							<td><?=$list['check_in']?></td>
-							<td><?=$list['check_out']?></td>
+							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_in']))); ?></td>
+							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_out']))); ?></td>
 							<td></td>
 							<td><?php echo 'Rp. ' . number_format($list['price'], '0' , '' , '.' ) . ',-'; ?></td>
 							<td><?=$list['diskon']?> %</td>
-							<td><a href="" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
-							<td><a href="" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-list-alt"></span></a></td>
+							<td><button href="" class="btn btn-xs btn-warning" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-shopping-cart"></span></button></td>
+							<td><button href="" class="btn btn-xs btn-success" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-list-alt"></span></button></td>
 							<td></td>
 							<td></td>
 							<td></td>
 							<td><a href="" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a></td>
 							<td><a href="" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span></a></td>
 						</tr>
-					<?php endforeach; ?>
+					<?php } endforeach; ?>
 					</tbody>
 				</table>
 			</div>

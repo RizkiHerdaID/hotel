@@ -19,6 +19,7 @@ class M_tamu extends CI_Model {
 			$this->db->where('id', $id);
 		}
 		$this->db->where('active', '1');
+        $this->db->where('check', '0');
 		$query = $this->db->get();
 		return $query->result_array();
 	}

@@ -45,7 +45,7 @@ class Booking extends CI_Controller {
 	}
 
 	public function getTgl(){
-		$datestring = '%d/%m/%Y';
+		$datestring = '%Y-%m-%d';
 		$time = time();
 		return mdate($datestring, $time);
 	}
@@ -102,6 +102,7 @@ class Booking extends CI_Controller {
 		                	'kode' => $kode,
 		                	'id_guest' => $id,
 		                    'class_id' => $class_id,
+                            'tgl_order' => $this->getTgl(),
 		                    'check_in' => $this->input->post('check-in'),
 		                    'check_out' => $this->input->post('check-out')
 	                    ];
@@ -121,6 +122,7 @@ class Booking extends CI_Controller {
 		        	'kode' => $kode,
 		            'id_guest' => $id_guest,
 		            'class_id' => $class_id,
+                    'tgl_order' => $this->getTgl(),
 		            'check_in' => $this->input->post('check-in'),
 		            'check_out' => $this->input->post('check-out')
 	            ];

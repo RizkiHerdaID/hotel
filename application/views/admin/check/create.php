@@ -13,7 +13,6 @@
 					</div>
 				<?php } ?>
 				<!-- end of alert -->
-
 				<div class="row">
 					<form action="<?=site_url('admin/check/create')?>" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
 						<div class=" col-md-6 col-lg-6">
@@ -24,6 +23,7 @@
 							<?php foreach($tamu as $list): ?>
 							<fieldset>
 								<!-- Text input-->
+                                <input id="booking_id" name="booking_id" type="text" value="" required="" hidden />
 								<input id="id" name="id" type="text" value="<?=$list['id']?>" required="" hidden />
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
@@ -44,14 +44,14 @@
 									<label class="col-md-4 control-label" for="lname">Nama Belakang</label>
 									<div class="col-md-8">
 										<input id="lname" name="lname" type="text" value="<?=$list['nama_belakang']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="email">E-mail</label>
 									<div class="col-md-8">
 										<input id="email" name="email" type="text" value="<?=$list['email']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -59,16 +59,16 @@
 									<label class="col-md-4 control-label" for="phone">Telepon / HP</label>
 									<div class="col-md-8">
 										<input id="phone" name="phone" type="text" value="<?=$list['telepon']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
-								
+
 								<!-- Text input-->
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="country">Negara</label>
 									<div class="col-md-8">
 										<input id="country" name="country" type="text" value="<?=$list['negara']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -79,13 +79,13 @@
 
 									</div>
 								</div>
-								
+
 								<!-- Text input-->
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="province">Provinsi</label>
 									<div class="col-md-8">
 										<input id="province" name="province" type="text" value="<?=$list['provinsi']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -93,7 +93,7 @@
 									<label class="col-md-4 control-label" for="city">Kota / Kabupaten</label>
 									<div class="col-md-8">
 										<input id="city" name="city" type="text" value="<?=$list['kota']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -101,7 +101,7 @@
 									<label class="col-md-4 control-label" for="zipcode">Kode Pos</label>
 									<div class="col-md-8">
 										<input id="zipcode" name="zipcode" type="text" value="<?=$list['zip']?>" placeholder="" class="form-control input-md" required="" readonly />
-										
+
 									</div>
 								</div>
 								<!-- Select Basic -->
@@ -121,7 +121,7 @@
 									<label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
 									<div class="col-md-5">
 										<input id="ktp" name="ktp" type="text" value="<?=set_value('ktp')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 									<div class="col-md-3">
 										<a href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-primary">Cari Tamu</a>
@@ -131,21 +131,21 @@
 									<label class="col-md-4 control-label" for="fname">Nama Depan</label>
 									<div class="col-md-8">
 										<input id="fname" name="fname" type="text" value="<?=set_value('fname')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="lname">Nama Belakang</label>
 									<div class="col-md-8">
 										<input id="lname" name="lname" type="text" value="<?=set_value('lname')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="email">E-mail</label>
 									<div class="col-md-8">
 										<input id="email" name="email" type="text" value="<?=set_value('email')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -153,7 +153,7 @@
 									<label class="col-md-4 control-label" for="phone">Telepon / HP</label>
 									<div class="col-md-8">
 										<input id="phone" name="phone" type="text" value="<?=set_value('phone')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -161,7 +161,7 @@
 									<label class="col-md-4 control-label" for="country">Negara</label>
 									<div class="col-md-8">
 										<input id="country" name="country" type="text" value="<?=set_value('country')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -169,16 +169,16 @@
 									<label class="col-md-4 control-label" for="address">Alamat</label>
 									<div class="col-md-8">
 										<input id="address" name="address" type="text" value="<?=set_value('address')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
-								
+
 								<!-- Text input-->
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="province">Provinsi</label>
 									<div class="col-md-8">
 										<input id="province" name="province" type="text" value="<?=set_value('province')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -186,7 +186,7 @@
 									<label class="col-md-4 control-label" for="city">Kota / Kabupaten</label>
 									<div class="col-md-8">
 										<input id="city" name="city" type="text" value="<?=set_value('city')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<!-- Text input-->
@@ -194,7 +194,7 @@
 									<label class="col-md-4 control-label" for="zipcode">Kode Pos</label>
 									<div class="col-md-8">
 										<input id="zipcode" name="zipcode" type="text" value="<?=set_value('zipcode')?>" placeholder="" class="form-control input-md" required="">
-										
+
 									</div>
 								</div>
 								<!-- Select Basic -->
@@ -238,7 +238,7 @@
 								<label class="col-md-4 control-label" for="kamar">Nomor Kamar</label>
 								<div class="col-md-8">
 									<select id="kamar" name="kamar" class="form-control" onmouseover="select()">
-										<option value=''>----Pilih Nomor Kamar----</option>
+										<option value=''>----Kamar Tidak Ada----</option>
 									</select>
 								</div>
 							</div>
@@ -262,7 +262,8 @@
 	</div>
 </div>
 <script>
-	<?php $datestring = 'd/m/Y'; if($booking){ foreach ($booking as $list) : ?>
+	<?php $datestring = 'Y-m-d'; if($booking){ foreach ($booking as $list) : ?>
+    document.getElementById("booking_id").value = <?=$list['booking_id']?>;
 	document.getElementById("jenis").value = <?=$list['class_id']?>;
 	document.getElementById("jenis").readOnly = true;
 	document.getElementById("check_out").value = "<?=date($datestring,strtotime(str_replace('-','/', $list['check_out']))); ?>";
