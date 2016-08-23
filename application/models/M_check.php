@@ -6,6 +6,7 @@ class M_check extends CI_Model {
 	private $pk = 'order_id';
 	private $join = 'guest';
 	private $join2 = 'class';
+    private $payment = 'payment';
 
 	public function __construct()
 	{
@@ -17,10 +18,12 @@ class M_check extends CI_Model {
 		$this->db->select('*');
 		$this->db->from($this->table);
 		$this->db->join($this->join, $this->table.'.guest_id = '.$this->join.'.id');
+        $this->db->join($this->payment, $this->table.'.order_id = '.$this->payment.'.order_id');
 		$this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
 		if (!is_null($id)) {
 			$this->db->where('id', $id);
 		}
+        $this->db->order_by('order.order_id', 'desc');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -70,18 +73,7 @@ class M_check extends CI_Model {
 		$order = $this->db->get()->result_array();
 
 		foreach ($order as $list){
-            $this->db->set('check', '0');
-            $this->db->where('id', $list['guest_id']);
-            $this->db->update('guest');
-
-			$this->db->select('*');
-			$this->db->from('class');
-			$this->db->where('idclass', $list['class_id']);
-			$class = $this->db->get()->result_array();
-		}
-
-		foreach ($class as $list){
-			$total += $list['price'];
+			$total += $list['payment_total'];
 		}
 
 		$this->db->set('payment_total', $total);
@@ -109,8 +101,13 @@ class M_check extends CI_Model {
 	{
 		$this->db->set('order_status', '4');
 		$this->db->where('order_id', $order_id);
-		$result = $this->db->update($this->table);
-		return $result;
+		$order = $this->db->update($this->table);
+        foreach ($order as $list) {
+            $this->db->set('check', '0');
+            $this->db->where('id', $list['guest_id']);
+            $this->db->update('guest');
+        }
+		return $order;
 	}
 
 	public function delete($order_id)
@@ -140,3 +137,4 @@ class M_check extends CI_Model {
 
 /* End of file M_check.php */
 /* Location: ./application/models/M_check.php */
+

@@ -86,7 +86,7 @@ $datestring = '%d/%m/%Y';
 									<?php break; ?>
 
 									<?php case "3": ?>
-									<td align="center"><button onclick='confirmBayarModal("<?=$list['order_id']?>")' class="btn btn-xs btn-primary"> <span class="glyphicon glyphicon-usd"></span> Bayar</button></td>
+									<td align="center"><button onclick='confirmBayarModal("<?=$list['payment_id']?>")' class="btn btn-xs btn-primary"> <span class="glyphicon glyphicon-usd"></span> Bayar</button></td>
 									<?php break; ?>
 
 									<?php case "4": ?>
@@ -110,7 +110,7 @@ $datestring = '%d/%m/%Y';
 	function confirmBayarModal(id){
 		$.ajax({
 				type : "GET",
-				url  : "<?=site_url('admin/check/payment?order_id=')?>"+id,
+				url  : "<?=site_url('admin/check/payment?payment_id=')?>"+id,
 				success: function(data){
 					$("#totalBayar").html(data);
 				}
@@ -126,8 +126,8 @@ $datestring = '%d/%m/%Y';
 	}
 
 	function confirmDeleteModal(id){
-		$('#deleteModal').modal();
-		$('#deleteButton').html('<a class="btn btn-danger" onclick="deleteData('+id+')">Hapus Data</a>');
+		$("#deleteModal").modal();
+		$("#deleteButton").html('<a class="btn btn-danger" onclick="deleteData('+id+')">Hapus Data</a>');
 	}
 
 	function deleteData(id){

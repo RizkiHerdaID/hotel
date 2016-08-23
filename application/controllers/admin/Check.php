@@ -13,6 +13,7 @@ class Check extends CI_Controller {
 		$this->load->model('m_grup');
 		$this->load->model('m_tamu');
 		$this->load->model('m_kamar');
+        $this->load->model('m_pembayaran', 'm_bayar');
 	}
 
 	public function index()
@@ -25,7 +26,7 @@ class Check extends CI_Controller {
 		$this->load->view($this->template, $data);
 	}
 
-	public function viewCreate($id=null, $booking=false)
+	public function viewCreate($id=null, $booking=null)
 	{
 		if ($booking){
 			$data = [
@@ -45,8 +46,7 @@ class Check extends CI_Controller {
 					'grup' => $this->m_grup->read(),
 					'jenis' => $this->m_jenis->read(),
 					'tgl' => $this->getTgl(),
-					'tamu' => $this->m_tamu->readTamu($id),
-					'booking' => false
+					'tamu' => $this->m_tamu->readTamu($id)
 				];
 			} else {
 				$data = [
@@ -54,8 +54,7 @@ class Check extends CI_Controller {
 					'content' => 'admin/check/create',
 					'jenis' => $this->m_jenis->read(),
 					'tgl' => $this->getTgl(),
-					'grup' => $this->m_grup->read(),
-					'booking' => false
+					'grup' => $this->m_grup->read()
 				];
 			}
 		}
@@ -244,7 +243,7 @@ class Check extends CI_Controller {
 		$data = [
 			'title' => 'Check-in - Cari Tamu',
 			'content' => 'admin/check/cariTamu',
-			'tamu' => $this->m_tamu->read()
+			'tamu' => $this->m_tamu->read_tamu()
 		];
 		$this->load->view($this->template, $data);
 	}
@@ -265,8 +264,8 @@ class Check extends CI_Controller {
 	}
 
 	public function payment(){
-		$order_id = $this->input->get('order_id');
-		$order = $this->m_check->order($order_id);
+		$payment_id = $this->input->get('payment_id');
+		$order = $this->m_bayar->read($payment_id);
 		$data = 0;
 		foreach ($order as $list) {
 			$data = 'Rp. ' . number_format($list['payment_total'], '0' , '' , '.' ) . ',-';;

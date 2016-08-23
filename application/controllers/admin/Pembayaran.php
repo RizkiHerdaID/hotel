@@ -11,10 +11,11 @@ class Pembayaran extends CI_Controller {
 	}
 
 	public function index(){
-		$data = [
+        $payment = $this->m_bayar->read();
+        $data = [
 			'title' => "Pembayaran",
 			'content' => "admin/pembayaran/index",
-			'bayar' => $this->m_bayar->read()
+			'payment' => $payment
 		];
 		$this->load->view($this->template, $data);
 	}

@@ -174,7 +174,7 @@ class Booking extends CI_Controller {
 		$data = [
 			'title' => 'Booking - Cari Tamu',
 			'content' => 'admin/booking/cariTamu',
-			'tamu' => $this->m_tamu->read()
+			'tamu' => $this->m_tamu->read_tamu()
 		];
 		$this->load->view($this->template, $data);
 	}

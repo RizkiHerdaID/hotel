@@ -19,10 +19,19 @@ class M_tamu extends CI_Model {
 			$this->db->where('id', $id);
 		}
 		$this->db->where('active', '1');
-        $this->db->where('check', '0');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+    public function read_tamu(){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join('guest_group', $this->table.'.kode_grup = '.$this->join.'.id_guest_group');
+        $this->db->where('active', '1');
+        $this->db->where('check', '0');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 	public function create($data){
 		$create = $this->db->insert($this->table, $data);

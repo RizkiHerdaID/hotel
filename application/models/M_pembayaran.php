@@ -16,7 +16,7 @@ class M_pembayaran extends CI_Model {
 		
 	}
 
-	public function read($id=null){
+	public function read($payment_id=null){
 		$this->db->select('*');
 		$this->db->from($this->table);
 		$this->db->join($this->join, $this->table.'.order_id = '.$this->join.'.order_id');
@@ -24,9 +24,10 @@ class M_pembayaran extends CI_Model {
 		$this->db->join($this->join3, $this->join3.'.id = '.$this->join.'.guest_id');
 		$this->db->join($this->join4, $this->join4.'.idrooms = '.$this->join.'.idrooms');
 		$this->db->join($this->join5, $this->join3.'.kode_grup = '.$this->join5.'.id_guest_group');
-		if (!is_null($id)) {
-			$this->db->where('id', $id);
+		if (!is_null($payment_id)) {
+			$this->db->where('payment_id', $payment_id);
 		}
+        $this->db->order_by('order.order_id', 'desc');
 		$query = $this->db->get();
 		return $query->result_array();
 	}

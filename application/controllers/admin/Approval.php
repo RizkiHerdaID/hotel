@@ -31,7 +31,7 @@ class Approval extends CI_Controller
             $this->session->set_flashdata("operation", "danger");
             $this->session->set_flashdata("message", "<strong>Gagal</strong> Terjadi kesalah sistem.");
         }
-        redirect("admin/approval");
+        redirect("admin/check");
     }
 
     public function reject($order_id){
@@ -44,6 +44,6 @@ class Approval extends CI_Controller
             $this->session->set_flashdata("operation", "danger");
             $this->session->set_flashdata("message", "<strong>Gagal</strong> Terjadi kesalah sistem.");
         }
-        redirect("admin/approval");
+        redirect("admin/check");
     }
 }

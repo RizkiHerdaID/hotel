@@ -262,12 +262,16 @@
 	</div>
 </div>
 <script>
-	<?php $datestring = 'Y-m-d'; if($booking){ foreach ($booking as $list) : ?>
+	<?php $datestring = 'Y-m-d';
+        if(isset($booking)){
+	        foreach ($booking as $list) { ?>
     document.getElementById("booking_id").value = <?=$list['booking_id']?>;
 	document.getElementById("jenis").value = <?=$list['class_id']?>;
 	document.getElementById("jenis").readOnly = true;
 	document.getElementById("check_out").value = "<?=date($datestring,strtotime(str_replace('-','/', $list['check_out']))); ?>";
-	<?php endforeach; }?>
+	<?php   }
+        }?>
+
 	function select() {
 		var idclass = $('#jenis').find(":selected").val();
 		$.ajax({
