@@ -5,7 +5,7 @@ class Grup extends CI_Controller {
     var $template = 'admin/template';
     
 	private $table = 'guest_group';
-	private $pk = 'kode';
+	private $pk = 'kode_grup';
 
 	public function __construct()
 	{
@@ -54,7 +54,7 @@ class Grup extends CI_Controller {
             else 
             {
             	$data = [
-                    'kode' => $this->input->post('gcode'),
+                    'kode_grup' => $this->input->post('gcode'),
                     'nama' => $this->input->post('gname'),
                     'diskon' => $this->input->post('diskon')
                 ];
@@ -95,7 +95,7 @@ class Grup extends CI_Controller {
             else 
             {
                 $data = [
-                    'kode' => $this->input->post('gcode'),
+                    'kode_grup' => $this->input->post('gcode'),
                     'nama' => $this->input->post('gname'),
                     'diskon' => $this->input->post('diskon')
                 ];

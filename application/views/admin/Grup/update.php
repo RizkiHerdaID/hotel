@@ -19,7 +19,7 @@
 					<div class="row form-group">
 						<label class="col-md-4 control-label" for="gcode">Kode Grup</label>
 						<div class="col-md-3">
-							<input id="gcode" maxlength="5" name="gcode" type="text" value="<?= $list['kode']?>" placeholder="" class="form-control input-md">
+							<input id="gcode" maxlength="5" name="gcode" type="text" value="<?= $list['kode_grup']?>" placeholder="" class="form-control input-md">
 						</div>
 						<label class="col-md-5" style="margin-top:5pt;">*Maksimal 5 karakter</label>
 					</div>

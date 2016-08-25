@@ -27,7 +27,7 @@
 						<?php foreach($grup as $list): ?>
 						<tr>
 							<td><?=$no++?></td>
-							<td><?=$list['kode']?></td>
+							<td><?=$list['kode_grup']?></td>
 							<td><?=$list['nama']?></td>
 							<td>
 								<?php
