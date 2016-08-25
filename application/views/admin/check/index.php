@@ -21,6 +21,7 @@ $datestring = '%d/%m/%Y';
 						<th>Nama Tamu</th>
 						<th>Telepon / HP</th>
 						<th>Jenis Kamar</th>
+						<th>Nomor Kamar</th>
 						<th>Tanggal Masuk</th>
 						<th>Tanggal Keluar</th>
 						<th>Status</th>
@@ -48,6 +49,7 @@ $datestring = '%d/%m/%Y';
 							<td><?=$list['nama_depan'].' '.$list['nama_belakang'] ?></td>
 							<td><?=$list['telepon']?></td>
 							<td><?=$list['title']?></td>
+							<td><?=$list['numbers']?></td>
 							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_in']))); ?></td>
 							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_out']))); ?></td>
 							<td><?php

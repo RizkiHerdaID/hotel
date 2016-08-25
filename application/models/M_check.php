@@ -20,6 +20,7 @@ class M_check extends CI_Model {
 		$this->db->join($this->join, $this->table.'.guest_id = '.$this->join.'.id');
         $this->db->join($this->payment, $this->table.'.order_id = '.$this->payment.'.order_id');
 		$this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
+        $this->db->join('rooms', $this->table.'.idrooms = rooms.idrooms');
 		if (!is_null($id)) {
 			$this->db->where('id', $id);
 		}
@@ -29,8 +30,7 @@ class M_check extends CI_Model {
 	}
 
 	public function create($data){
-		$this->db->trans_start();
-		
+
 		$this->db->insert($this->table, $data);
 
 		$this->db->set('guest_id', $data['guest_id']);
@@ -43,18 +43,32 @@ class M_check extends CI_Model {
 		$this->db->update('guest');
 
 		$idTop = $this->readTop();
+        $gross = 0;
+        $diskon = 0;
+        $ppn = 0;
+        $total = 0;
+        $guest_id = 0;
+        $id = 0;
 		foreach ($idTop as $list) {
 			$id = (string) $list['order_id'];
 			$guest_id = (string) $list['guest_id'];
-		}
-		$kwitansi = 'KW'.$guest_id .rand ( 10 , 99 ) .'-'.rand ( 1000 , 9999 );
-		$this->db->set('order_id', $id);
-		$this->db->set('kwitansi', $kwitansi);
-		$this->db->insert('payment');
-		
-		$this->db->trans_complete();
-		$status =  $this->db->trans_status();
-		return $status;
+            $gross = (string) $list['price'];
+            $diskon = (string) $list['diskon'];
+            $diskon = (($gross*$diskon)/100);
+            $net = $gross - $diskon;
+            $ppn = $net * 0.1;
+            $total = $net + $ppn;
+        }
+        $kwitansi = 'KW'.$guest_id .rand ( 10 , 99 ) .'-'.rand ( 1000 , 9999 );
+        $this->db->set('order_id', $id);
+        $this->db->set('kwitansi', $kwitansi);
+        $this->db->set('payment_gross', $gross);
+        $this->db->set('discount_room', $diskon);
+        $this->db->set('ppn', $ppn);
+        $this->db->set('payment_total', $total);
+        $status = $this->db->insert('payment');
+
+        return $status;
 	}
 	
 	public function check_out($order_id){
@@ -68,17 +82,17 @@ class M_check extends CI_Model {
 		$this->db->update($this->table);
 
         $this->db->select('*');
-		$this->db->from($this->table);
+		$this->db->from('payment');
 		$this->db->where('order_id', $order_id);
-		$order = $this->db->get()->result_array();
+		$payment = $this->db->get()->result_array();
 
-		foreach ($order as $list){
+		foreach ($payment as $list){
 			$total += $list['payment_total'];
 		}
 
 		$this->db->set('payment_total', $total);
 		$this->db->where('order_id', $order_id);
-		$this->db->update($this->table);
+		$this->db->update('payment');
 
 		$this->db->set('payment_date', date('Y-m-d H:i:s'));
 		$this->db->where('order_id', $order_id);
@@ -127,10 +141,13 @@ class M_check extends CI_Model {
 
 	 public function readTop(){
 		$this->db->select('*');
-		$this->db->order_by('order_id', 'desc');
-		$this->db->limit(1);
-		$this->db->from($this->table);
-		$query = $this->db->get();
+         $this->db->from($this->table);
+         $this->db->join($this->join, $this->table.'.guest_id = '.$this->join.'.id');
+         $this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
+         $this->db->join('guest_group', 'guest_group'.'.id_guest_group = '.$this->join.'.kode_grup');
+         $this->db->order_by('order.order_id', 'desc');
+         $this->db->limit(1);
+         $query = $this->db->get();
 		return $query->result_array();
 	}
 }
