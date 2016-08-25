@@ -19,8 +19,6 @@
 							<th rowspan="2" style="vertical-align:middle">No Kwitansi</th>
 							<th rowspan="2" style="vertical-align:middle">Kode Order</th>
 							<th rowspan="2" style="vertical-align:middle">Nama</th>
-							<th rowspan="2" style="vertical-align:middle">Jenis Kamar</th>
-							<th rowspan="2" style="vertical-align:middle">Kamar</th>
 							<th rowspan="2" style="vertical-align:middle">Hari</th>
 							<th rowspan="2" style="vertical-align:middle">Sewa Kamar</th>
 							<th rowspan="2" style="vertical-align:middle">Diskon Kamar</th>
@@ -42,14 +40,12 @@
 							<td><?=$list['kwitansi']?></td>
 							<td><?=$list['kode']?></td>
 							<td><?=$list['nama_depan'].' '.$list['nama_belakang']?></td>
-							<td><?=$list['title']?></td>
-							<td><?=$list['numbers']?></td>
 							<td></td>
 							<td><?php echo 'Rp. ' . number_format($list['price'], '0' , '' , '.' ) . ',-'; ?></td>
-							<td><?=$list['diskon']?> %</td>
+							<td><?php echo 'Rp. ' . number_format($list['discount_room'], '0' , '' , '.' ) . ',-'; ?></td>
 							<td><button href="" class="btn btn-xs btn-warning" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-shopping-cart"></span></button></td>
 							<td><button href="" class="btn btn-xs btn-success" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-list-alt"></span></button></td>
-							<td></td>
+							<td><?php echo 'Rp. ' . number_format($list['ppn'], '0' , '' , '.' ) . ',-'; ?></td>
 							<td></td>
 							<td><?php echo 'Rp. ' . number_format($list['payment_total'], '0' , '' , '.' ) . ',-'; ?></td>
 							<?php switch($list['order_status']){
