@@ -234,7 +234,7 @@ class Check extends CI_Controller {
 			$this->session->set_flashdata("operation", "danger");
 			$this->session->set_flashdata("message", "<strong>Gagal</strong> Terjadi kesalahan sistem.");
 		}
-		redirect("admin/check");
+		redirect("admin/pembayaran");
 	}
 
 
@@ -265,13 +265,14 @@ class Check extends CI_Controller {
 
 	public function payment(){
 		$payment_id = $this->input->get('payment_id');
-		$order = $this->m_bayar->read($payment_id);
-		$data = 0;
-		foreach ($order as $list) {
-			$data = 'Rp. ' . number_format($list['payment_total'], '0' , '' , '.' ) . ',-';;
-		}
-
-		echo $data;
+		$content = [
+			'title' => 'Harga',
+			'hargaSewa' => $this->m_bayar->read($payment_id),
+			'foods' => $this->m_bayar->list_pesanan($payment_id),
+			'services' => $this->m_bayar->list_jasa($payment_id)
+		];
+		$data = $this->load->view('admin/pembayaran/list_pembayaran', $content);
+		return $data;
 	}
 
 

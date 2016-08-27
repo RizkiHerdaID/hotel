@@ -19,14 +19,14 @@
 							<th rowspan="2" style="vertical-align:middle">No Kwitansi</th>
 							<th rowspan="2" style="vertical-align:middle">Kode Order</th>
 							<th rowspan="2" style="vertical-align:middle">Nama</th>
-							<th rowspan="2" style="vertical-align:middle">Hari</th>
-							<th rowspan="2" style="vertical-align:middle">Sewa Kamar</th>
-							<th rowspan="2" style="vertical-align:middle">Diskon Kamar</th>
+							<th rowspan="2" style="vertical-align:middle; text-align: center;">Sewa Kamar<br/>/ Hari</th>
+							<th rowspan="2" style="vertical-align:middle; text-align: center;">Jumlah <br/>Hari</th>
+							<th rowspan="2" style="vertical-align:middle; text-align: center;">Sewa <br/>Setelah Diskon</th>
 							<th colspan="2">Additional</th>
 							<th rowspan="2" style="vertical-align:middle">PPN 10%</th>
-							<th rowspan="2" style="vertical-align:middle">Tgl Bayar</th>
-							<th rowspan="2" style="vertical-align:middle">Total Bayar</th>
-							<th rowspan="2" style="vertical-align:middle">Cetak</th>	
+							<th rowspan="2" style="vertical-align:middle; text-align: center;">Total<br/> Bayar</th>
+							<th rowspan="2" style="vertical-align:middle; text-align: center;">Tanggal<br/> Bayar</th>
+							<th rowspan="2" style="vertical-align:middle">Aksi</th>
 						</tr>
 						<tr>
 							<th>F&B</th>
@@ -40,27 +40,65 @@
 							<td><?=$list['kwitansi']?></td>
 							<td><?=$list['kode']?></td>
 							<td><?=$list['nama_depan'].' '.$list['nama_belakang']?></td>
-							<td></td>
-							<td><?php echo 'Rp. ' . number_format($list['price'], '0' , '' , '.' ) . ',-'; ?></td>
-							<td><?php echo 'Rp. ' . number_format($list['discount_room'], '0' , '' , '.' ) . ',-'; ?></td>
-							<td><button href="" class="btn btn-xs btn-warning" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-shopping-cart"></span></button></td>
-							<td><button href="" class="btn btn-xs btn-success" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-list-alt"></span></button></td>
-							<td><?php echo 'Rp. ' . number_format($list['ppn'], '0' , '' , '.' ) . ',-'; ?></td>
-							<td></td>
-							<td><?php echo 'Rp. ' . number_format($list['payment_total'], '0' , '' , '.' ) . ',-'; ?></td>
+							<td style="vertical-align:middle; text-align: center;"><?php echo 'Rp. ' . number_format($list['price'], '0' , '' , '.' ) . ',-'; ?></td>
+							<td style="text-align: center;"><?php if($list['order_status']>2){ echo $list['day'].' hari'; }?></td>
+							<td><?php if($list['order_status']>2){ echo 'Rp. ' . number_format($list['payment_room'], '0' , '' , '.' ) . ',-'; }?></td>
+							<td><a href="<?=site_url('admin/pembayaran/foods/');?><?=$list['payment_id']?>" class="btn btn-xs btn-warning" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+							<td><a href="<?=site_url('admin/pembayaran/services/');?><?=$list['payment_id']?>" class="btn btn-xs btn-success" <?php if($list['order_status'] < 2) echo 'disabled'; ?>><span class="glyphicon glyphicon-list-alt"></span></a></td>
+							<td><?php if($list['order_status']>2){ echo 'Rp. ' . number_format($list['ppn'], '0' , '' , '.' ) . ',-'; }?></td>
+							<td><?php if($list['order_status']>2){ echo 'Rp. ' . number_format($list['payment_total'], '0' , '' , '.' ) . ',-'; }?></td>
+							<td style="vertical-align:middle; text-align: center;"><?php  if($list['order_status'] > 3){echo date('d M Y', strtotime(str_replace('-','/', $list['payment_date'])));} ?></td>
 							<?php switch($list['order_status']){
 								case "3":?>
-									<td align="center"><button onclick='confirmBayarModal("<?=$list['order_id']?>")' class="btn btn-xs btn-primary"> <span class="glyphicon glyphicon-usd"></span> Bayar</button></td>
+									<td align="center"><button onclick='confirmBayarModal("<?=$list['order_id']?>")' class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-usd"></span> Bayar</button></td>
 								<?php break; ?>
 								<?php case "4":?>
-									<td><a href="" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-print"></span></a></td>
-										 <?php break; ?>
+									<td align="center"><a href="" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a></td>
+										 <?php break; default: echo '<td></td>'?>
 							<?php }?>
 						</tr>
 					<?php } endforeach; ?>
 					</tbody>
 				</table>
 			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function confirmBayarModal(id){
+		$.ajax({
+				type : "GET",
+				url  : "<?=site_url('admin/check/payment?payment_id=')?>"+id,
+				success: function(data){
+					$("#sewaKamar").html(data);
+				}
+		});
+		$('#bayarModal').modal();
+		$('#bayarButton').html('<a class="btn btn-primary" onclick="bayarData('+id+')">Bayar</a>');
+	}
+
+	function bayarData(id){
+		// do your stuffs with id
+		window.location.assign("<?=site_url('admin/check/bayar/')?>"+id)
+		$('#bayarModal').modal('hide'); // now close modal
+	}
+</script>
+<div id="bayarModal" class="modal fade" role='dialog'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Pembayaran</h4>
+			</div>
+			<div class="modal-body">
+				<span id='sewaKamar'></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<span id= 'bayarButton'></span>
+			</div>
+
 		</div>
 	</div>
 </div>

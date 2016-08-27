@@ -21,6 +21,7 @@ class M_check extends CI_Model {
         $this->db->join($this->payment, $this->table.'.order_id = '.$this->payment.'.order_id');
 		$this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
         $this->db->join('rooms', $this->table.'.idrooms = rooms.idrooms');
+        $this->db->join('guest_group', 'guest_group'.'.id_guest_group = '.$this->join.'.kode_grup');
 		if (!is_null($id)) {
 			$this->db->where('id', $id);
 		}
@@ -43,29 +44,15 @@ class M_check extends CI_Model {
 		$this->db->update('guest');
 
 		$idTop = $this->readTop();
-        $gross = 0;
-        $diskon = 0;
-        $ppn = 0;
-        $total = 0;
         $guest_id = 0;
         $id = 0;
 		foreach ($idTop as $list) {
 			$id = (string) $list['order_id'];
 			$guest_id = (string) $list['guest_id'];
-            $gross = (string) $list['price'];
-            $diskon = (string) $list['diskon'];
-            $diskon = (($gross*$diskon)/100);
-            $net = $gross - $diskon;
-            $ppn = $net * 0.1;
-            $total = $net + $ppn;
         }
         $kwitansi = 'KW'.$guest_id .rand ( 10 , 99 ) .'-'.rand ( 1000 , 9999 );
         $this->db->set('order_id', $id);
         $this->db->set('kwitansi', $kwitansi);
-        $this->db->set('payment_gross', $gross);
-        $this->db->set('discount_room', $diskon);
-        $this->db->set('ppn', $ppn);
-        $this->db->set('payment_total', $total);
         $status = $this->db->insert('payment');
 
         return $status;
@@ -73,8 +60,10 @@ class M_check extends CI_Model {
 	
 	public function check_out($order_id){
 		$total = 0;
-		$order = array();
-		$class = array();
+        $this->db->set('check_out', $this->getTgl());
+        $this->db->where('order_id', $order_id);
+        $this->db->update('order');
+
 		$this->db->trans_start();
 
 		$this->db->set('order_status', '3');
@@ -82,26 +71,66 @@ class M_check extends CI_Model {
 		$this->db->update($this->table);
 
         $this->db->select('*');
-		$this->db->from('payment');
-		$this->db->where('order_id', $order_id);
+        $this->db->from($this->table);
+        $this->db->join($this->join, $this->table.'.guest_id = '.$this->join.'.id');
+        $this->db->join('guest_group', 'guest_group'.'.id_guest_group = '.$this->join.'.kode_grup');
+        $this->db->join($this->payment, $this->table.'.order_id = '.$this->payment.'.order_id');
+        $this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
+        $this->db->join('rooms', $this->table.'.idrooms = rooms.idrooms');
+		$this->db->where('order.order_id', $order_id);
 		$payment = $this->db->get()->result_array();
 
 		foreach ($payment as $list){
-			$total += $list['payment_total'];
-		}
+            $total += $list['payment_total'];
 
-		$this->db->set('payment_total', $total);
-		$this->db->where('order_id', $order_id);
-		$this->db->update('payment');
+            $check_in = $list['check_in'];
+            $check_out = $list['check_out'];
+            $rawHari = $this->selisihHari($check_in,$check_out);
+            $hari = 0;
+            foreach ($rawHari as $hari) {
+            	$hari = $hari['day'] * -1;
+            }
+            if ($hari == 0) {
+            	$hari = 1;	
+            }
+            $hargaSewa = $list['price'] * $hari;
+            $diskon = $list['diskon']*0.01;
 
-		$this->db->set('payment_date', date('Y-m-d H:i:s'));
-		$this->db->where('order_id', $order_id);
-		$this->db->update('payment');
+            $hargaSetelahDiskon = $hargaSewa - ($hargaSewa*$diskon);
+            $ppnKamar = $hargaSetelahDiskon * 0.1;
+			$ppn = $list['ppn'] + $ppnKamar;
 
-		$this->db->trans_complete();
+			$total += $hargaSetelahDiskon + $ppnKamar;
+            $this->db->set('guest_id', '0');
+            $this->db->set('status', '0');
+            $this->db->where('idrooms', $list['idrooms']);
+            $this->db->update('rooms');
+
+            $this->db->set('day', $hari);
+            $this->db->set('payment_room', $hargaSetelahDiskon);
+            $this->db->set('ppn', $ppn);
+            $this->db->set('payment_total', $total);
+            $this->db->where('order_id', $order_id);
+            $this->db->update('payment');
+        }
+
+
+        $this->db->trans_complete();
 		$status =  $this->db->trans_status();
 		return $status;
 	}
+
+    public function getTgl(){
+        $datestring = '%Y-%m-%d';
+        $time = time();
+        return mdate($datestring, $time);
+    }
+
+    public function selisihHari($check_in, $check_out){
+        $query = $this->db->query("Select DATEDIFF('".$check_in."','".$check_out."') as day");
+
+        return $query->result_array();
+    }
 
 	public function check_in($order_id)
 	{
@@ -113,15 +142,28 @@ class M_check extends CI_Model {
 
 	public function bayar($order_id)
 	{
+		$this->db->trans_start();
 		$this->db->set('order_status', '4');
 		$this->db->where('order_id', $order_id);
-		$order = $this->db->update($this->table);
+		$this->db->update($this->table);
+
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('order_id', $order_id);
+		$order = $this->db->get()->result_array();
+
         foreach ($order as $list) {
+            $this->db->set('payment_date',  $this->getTgl());
+            $this->db->where('order_id', $list['order_id']);
+            $this->db->update('payment');
+
             $this->db->set('check', '0');
             $this->db->where('id', $list['guest_id']);
             $this->db->update('guest');
         }
-		return $order;
+        $this->db->trans_complete();
+		$status =  $this->db->trans_status();
+		return $status;
 	}
 
 	public function delete($order_id)
@@ -143,8 +185,6 @@ class M_check extends CI_Model {
 		$this->db->select('*');
          $this->db->from($this->table);
          $this->db->join($this->join, $this->table.'.guest_id = '.$this->join.'.id');
-         $this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
-         $this->db->join('guest_group', 'guest_group'.'.id_guest_group = '.$this->join.'.kode_grup');
          $this->db->order_by('order.order_id', 'desc');
          $this->db->limit(1);
          $query = $this->db->get();

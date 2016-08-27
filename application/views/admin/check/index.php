@@ -19,7 +19,6 @@ $datestring = '%d/%m/%Y';
 					<tr>
 						<th>Kode Order</th>
 						<th>Nama Tamu</th>
-						<th>Telepon / HP</th>
 						<th>Jenis Kamar</th>
 						<th>Nomor Kamar</th>
 						<th>Tanggal Masuk</th>
@@ -47,7 +46,6 @@ $datestring = '%d/%m/%Y';
 						?>>
 							<td><?=$list['kode']?></td>
 							<td><?=$list['nama_depan'].' '.$list['nama_belakang'] ?></td>
-							<td><?=$list['telepon']?></td>
 							<td><?=$list['title']?></td>
 							<td><?=$list['numbers']?></td>
 							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_in']))); ?></td>
@@ -114,7 +112,7 @@ $datestring = '%d/%m/%Y';
 				type : "GET",
 				url  : "<?=site_url('admin/check/payment?payment_id=')?>"+id,
 				success: function(data){
-					$("#totalBayar").html(data);
+					$("#sewaKamar").html(data);
 				}
 		});
 		$('#bayarModal').modal();
@@ -144,13 +142,10 @@ $datestring = '%d/%m/%Y';
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title">Bayar Biaya Kamar</h4>
+				<h4 class="modal-title">Pembayaran</h4>
 			</div>
 			<div class="modal-body">
-				<p>Berikut rincian dana yang harus di bayar</p>
-				<p>Sewa Kamar : <span id='totalBayar'></span></p>
-				<p>Kamar ini tidak akan tersedia lagi bagi tamu baru di masa datang. <br/>Namun, histori kamar ini akan tetap ada di setiap transaksi yang pernah tercatat</p>
-
+				<span id='sewaKamar'></span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

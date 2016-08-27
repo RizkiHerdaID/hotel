@@ -23,7 +23,7 @@
 							<?php foreach($tamu as $list): ?>
 							<fieldset>
 								<!-- Text input-->
-                                <input id="booking_id" name="booking_id" type="text" value="" required="" hidden />
+                               <?php if(isset($booking)){ ?> <input id="booking_id" name="booking_id" type="text" value="" required="" hidden /> <?php } ?>
 								<input id="id" name="id" type="text" value="<?=$list['id']?>" required="" hidden />
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
