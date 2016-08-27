@@ -125,6 +125,7 @@
 							<label class="col-md-4 control-label" for="level">Level</label>
 							<div class="col-md-8">
 								<select id="level" name="level" class="form-control">
+									<option value="">--Pilih Salah Satu--</option>
 									<?php foreach($grup as $list): ?>
 									<option value="<?=$list['id']?>"><?=$list['description']?></option>
 									<?php endforeach; ?>

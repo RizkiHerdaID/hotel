@@ -7,6 +7,10 @@ class Kamar extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+        if (!$this->authentication->is_loggedin())
+        {
+            redirect('auth');
+        }
 		$this->load->model('m_kamar');
 		$this->load->model('m_jenis');
 	}

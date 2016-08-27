@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <title><?= $title ?> - Administrator</title>
+    <title><?= $title ?> - <?=$this->session->userdata('description')?></title>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets_ad/') ?>css/bootstrap.css" rel="stylesheet">
     <!--external css-->
@@ -38,11 +38,11 @@
           <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="index.html" class="logo"><b><?= $title ?> - Administrator</b></a>
+        <a href="index.html" class="logo"><b><?= $title ?> - <?=$this->session->userdata('description')?></b></a>
         <!--logo end-->
         <div class="top-menu">
           <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="login.html">Logout</a></li>
+            <li><a class="logout" href="<?=site_url('auth/logout')?>">Logout</a></li>
           </ul>
         </div>
       </header>

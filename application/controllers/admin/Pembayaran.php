@@ -7,6 +7,10 @@ class Pembayaran extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+        if (!$this->authentication->is_loggedin())
+        {
+            redirect('auth');
+        }
 		$this->load->model('m_pembayaran', 'm_bayar');
         $this->load->model('m_makanan');
         $this->load->model('m_jasa');
@@ -21,6 +25,16 @@ class Pembayaran extends CI_Controller {
 		];
 		$this->load->view($this->template, $data);
 	}
+
+    public function piutang(){
+        $payment = $this->m_bayar->read();
+        $data = [
+            'title' => "Piutang",
+            'content' => "admin/pembayaran/piutang",
+            'payment' => $payment
+        ];
+        $this->load->view($this->template, $data);
+    }
 
     public function foods($payment_id){
         $data = [

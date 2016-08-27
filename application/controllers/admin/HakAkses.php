@@ -42,8 +42,8 @@ class HakAkses extends CI_Controller {
     public function create(){
 		if($this->input->server('REQUEST_METHOD') == "POST")
         {
-        	$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[8]|max_length[30]');
-            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|max_length[30]');
+        	$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[30]');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[30]');
             $this->form_validation->set_rules('passconf', 'Password Konfirmasi', 'trim|required|matches[password]');
             $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required');
             $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|required');
@@ -56,21 +56,21 @@ class HakAkses extends CI_Controller {
             	//ERROR
                 $this->session->set_flashdata("errors", validation_errors());
             } 
-            else 
+            else
             {
-            	$data = [
-                    'username' => $this->input->post('username'),
-                    'password' => $this->input->post('password'),
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+
+                $data = [
                     'first_name' => $this->input->post('fname'),
                     'last_name' => $this->input->post('lname'),
                     'email' => $this->input->post('email'),
                     'phone' => $this->input->post('phone'),
                 ];
-                
-                $user_id = $this->input->post('userid');
+
                 $id_group = $this->input->post('level');
 
-                if($this->m_hakakses->create($data, $user_id, $id_group)) {
+                if($this->m_hakakses->create($data, $id_group, $username, $password)) {
                 	$this->session->set_flashdata("operation", "success");
                     $this->session->set_flashdata("message", "<strong>Pengurus</strong> berhasil ditambah");
                     redirect('admin/hakAkses');

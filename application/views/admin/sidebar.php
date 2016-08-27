@@ -1,5 +1,7 @@
 <?php
 
+$level = $this->session->userdata('group_id');
+
 $dashboard_active = "";
 
 $master_active = "";
@@ -118,7 +120,9 @@ MAIN SIDEBAR MENU
 
             <p class="centered"><a href="profile.html"><img src="<?php echo base_url('images/') ?>ui-sam.jpg"
                                                             class="img-circle" width="60"></a></p>
-            <h5 class="centered">Rizki Herdatullah</h5>
+            <h5 class="centered"><?=$this->session->userdata('nama_user')?></h5>
+            <h4 class="centered"><?=$this->session->userdata('description')?> Hotel</h4>
+
 
             <li class="mt">
                 <a class="<?= $dashboard_active ?>" href="<?php echo site_url('admin/Dashboard') ?>">
@@ -126,6 +130,7 @@ MAIN SIDEBAR MENU
                     <span>Dashboard</span>
                 </a>
             </li>
+            <?php if($level == 1 || $level == 2) { ?>
             <li class="sub-menu">
                 <a href="javascript:;" class="<?= $master_active ?>">
                     <i class="fa fa-desktop"></i>
@@ -145,6 +150,8 @@ MAIN SIDEBAR MENU
                     <li class="<?= $jasa_active ?>"><a href="<?php echo site_url('admin/jasa') ?>">Jasa Lainnya</a></li>
                 </ul>
             </li>
+            <?php } ?>
+            <?php if($level == 1 || $level == 3) { ?>
             <li class="sub-menu">
                 <a href="javascript:;" class="<?= $registrasi_active ?>">
                     <i class="fa fa-cogs"></i>
@@ -159,6 +166,8 @@ MAIN SIDEBAR MENU
                     </li>
                 </ul>
             </li>
+            <?php } ?>
+            <?php if($level == 1 || $level == 4) { ?>
             <li class="sub-menu">
                 <a href="javascript:;" class="<?= $transaksi_active ?>">
                     <i class="fa fa-book"></i>
@@ -167,19 +176,22 @@ MAIN SIDEBAR MENU
                 <ul class="sub">
                     <li class="<?= $pembayaran_active ?>"><a href="<?php echo site_url('admin/pembayaran') ?>">Pembayaran</a>
                     </li>
-                    <li class="<?= $piutang_active ?>"><a href="#">Piutang</a></li>
+                    <li class="<?= $piutang_active ?>"><a href="<?php echo site_url('admin/pembayaran/piutang') ?>">Piutang</a></li>
                 </ul>
             </li>
+            <?php } ?>
+            <?php if($level == 1 || $level == 2) { ?>
             <li class="sub-menu">
                 <a href="javascript:;" class="<?= $laporan_active ?>">
                     <i class="fa fa-tasks"></i>
                     <span>Laporan</span>
                 </a>
                 <ul class="sub">
-                    <li class="<?= $keuangan_active ?>"><a href="#">Laporan Keuangan</a></li>
-                    <li class="<?= $daftar_tamu_active ?>"><a href="#">Laporan Daftar Tamu</a></li>
+                    <li class="<?= $keuangan_active ?>"><a href="<?php echo site_url('admin/laporan/keuangan') ?>">Laporan Keuangan</a></li>
+                    <li class="<?= $daftar_tamu_active ?>"><a href="<?php echo site_url('admin/laporan/tamu') ?>">Laporan Daftar Tamu</a></li>
                 </ul>
             </li>
+            <?php } ?>
         </ul>
         <!-- sidebar menu end-->
     </div>
