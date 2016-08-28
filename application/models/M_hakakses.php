@@ -12,7 +12,6 @@ class M_hakakses extends CI_Model {
 	{
 		parent::__construct();
         $this->load->library('authentication');
-
 	}
 
 	public function read($id_user=null, $group_id=null){
