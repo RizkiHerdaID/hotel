@@ -47,6 +47,7 @@ class Auth extends CI_Controller
                 redirect('auth');
             }
         }
+        redirect('auth');
     }
 
     public function logout()
