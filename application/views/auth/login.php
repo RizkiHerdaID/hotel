@@ -36,6 +36,11 @@
 	  	
 		      <form class="form-login" action="<?php echo site_url('auth/login') ?>" method="post">
 		        <h2 class="form-login-heading">Login</h2>
+				  <?php if($this->session->flashdata('message') != NULL){ ?>
+					  <div class="alert alert-danger" role="alert">
+						  <?=$this->session->flashdata('message'); ?>
+					  </div>
+				  <?php } ?>
 		        <div class="login-wrap">
 		            <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
 		            <br>

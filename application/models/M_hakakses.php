@@ -32,9 +32,8 @@ class M_hakakses extends CI_Model {
         $this->db->from($this->table);
         $this->db->join('users_groups', 'users.user_id = users_groups.user_id');
         $this->db->join('groups', 'users_groups.group_id = groups.id');
-        $this->db->where('active', '1');
         $this->db->where('users.user_id', $id_user);
-        $this->db->order_by('users_groups.group_id', 'ASC');
+        $this->db->where('active', '1');
         $query = $this->db->get();
         return $query->result_array();
     }
