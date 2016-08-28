@@ -17,7 +17,6 @@
           <label for="" class="labelDetail"><?= $list['username'] ?></label>
         </div>
       </div>
-      
       <!-- Text input-->
       <div class="form-group">
         <label class="col-md-4 control-label" for="fname">Nama Depan</label>
