@@ -11,17 +11,17 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('m_hakakses');
+    }
+
+    public function index()
+    {
         /* Lakukan pengecekan apakah user sudah login pada sesi saat ini
          * Serta Pastikan username yang login adalah yang masih aktif (belum dihapus) */
         $active = $this->session->userdata('active');
         if ($this->authentication->is_loggedin() && $active == 1) {
             redirect('admin/dashboard');
         }
-        $this->load->model('m_hakakses');
-    }
-
-    public function index()
-    {
         $this->load->view('auth/login');
     }
 
