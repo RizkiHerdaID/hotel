@@ -47,7 +47,7 @@
                 <div class="registration">
                     Don't have an account yet?<br/>
                     <a class="" href="#">
-                        Contact Administrator
+                        Contact Administrator <?=$_SERVER['SERVER_ADDR']?>
                     </a>
                 </div>
 

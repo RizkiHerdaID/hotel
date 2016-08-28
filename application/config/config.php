@@ -31,7 +31,13 @@ function __autoload($classname) {
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://hotel.mascitra.com/';
+if ($_SERVER['SERVER_ADDR'] === '::1') 
+{
+    $config['base_url'] = 'http://localhost/hotel/';
+} else {
+    $config['base_url'] = 'http://hotel.mascitra.com/';
+}
+
 
 /*
 |--------------------------------------------------------------------------
