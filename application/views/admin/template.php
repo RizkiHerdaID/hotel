@@ -65,7 +65,7 @@
       <section id="main-content">
         <section class="wrapper">
           <div class="row">
-            <div class="col-lg-12 main-chart">
+            <div class="col-lg-12 main-chart" id="div_result">
               <?php $this->load->view($content); ?>
             </div>
           </div>
