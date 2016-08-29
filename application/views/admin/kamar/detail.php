@@ -114,8 +114,20 @@
 			</div>
 		</div>
 		<div class="panel-footer">
-			<a href="<?=site_url('admin/kamar')?>" class="btn btn-warning">Kembali</a>
+			<a href="javascript:back()" class="btn btn-warning">Kembali</a>
 		</div>
 	</div>
 </div>
 <?php endforeach; ?>
+<script>
+	function back() {
+		$.ajax({
+			type: "POST",
+			url: "<?=site_url('admin/jenis/')?>",
+			data: "back=" + true,
+			success: function (msg) {
+				$("#div_result").html(msg);
+			}
+		});
+	}
+</script>

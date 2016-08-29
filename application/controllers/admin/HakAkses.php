@@ -11,45 +11,58 @@ class HakAkses extends CI_Controller
         $this->load->model('m_hakakses');
     }
 
-    public function index()
+    public function index($back = FALSE)
     {
+        $back = $this->input->post('back');
+        $content = 'admin/hakakses/index';
         $data = [
             'title' => 'Daftar Pengguna & Hak Akses',
-            'content' => 'admin/hakakses/index',
+            'content' => $content,
             'hakakses' => $this->m_hakakses->read(),    // Menampilkan Data Daftar Pengurus
             'grup' => $this->m_hakakses->read_groups()  // Pengisi drop-down Level pada fitur "Tambah Pengguna"
         ];
-        $this->load->view($this->template, $data);
+        if($back){
+            $respone = $this->load->view($content, $data, TRUE);
+            echo $respone;
+        } else {
+            $this->load->view($this->template, $data);
+        }
     }
 
-    public function details($user_id, $id_group)
+    public function details()
     {
+        $user_id = $this->input->post('id');
+        $id_group = $this->input->post('group');
+        $content = 'admin/hakakses/detail';
         $data = [
             'title' => 'Detail Pengurus & Hak Akses',
-            'content' => 'admin/hakakses/detail',
             'detail' => $this->m_hakakses->read($user_id, $id_group) // Menampilkan Detail Pengurus berdasarkan ID Pengurus & ID Level
         ];
-        $this->load->view($this->template, $data);
+        $response = $this->load->view($content, $data, TRUE);
+        echo $response;
     }
 
-    public function viewUpdate($user_id, $id_group)
+    public function viewUpdate()
     {
+        $user_id = $this->input->post('id');
+        $id_group = $this->input->post('group');
+        $content = 'admin/hakakses/update';
         $data = [
             'title' => 'Update Data Pengurus & Hak Akses',
-            'content' => 'admin/hakakses/update',
             'detail' => $this->m_hakakses->read($user_id, $id_group) // Menampilkan Detail Pengurus berdasarkan ID Pengurus & ID Level
         ];
-        $this->load->view($this->template, $data);
+        $response = $this->load->view($content, $data, TRUE);
+        echo $response;
     }
 
     public function create()
     {
         if ($this->input->server('REQUEST_METHOD') == "POST") {
-            $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[30]');
+            $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[30]|alpha_numeric');
             $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[30]');
             $this->form_validation->set_rules('passconf', 'Password Konfirmasi', 'trim|required|matches[password]');
-            $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required|alpha');
-            $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|required|alpha');
+            $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required|alpha_numeric_spaces');
+            $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|alpha_numeric_spaces');
             $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|max_length[100]');
             $this->form_validation->set_rules('phone', 'Telepon / HP', 'trim|required|is_numeric|max_length[20]');
             $this->form_validation->set_rules('level', 'Level', 'trim|required|is_numeric');
@@ -95,8 +108,8 @@ class HakAkses extends CI_Controller
     public function update()
     {
         // TODO Perlu ditambahkan fitur reset password hanya untuk level admin saja
-        $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required|alpha');
-        $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|required|alpha');
+        $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|alpha_numeric_spaces');
         $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|max_length[100]');
         $this->form_validation->set_rules('phone', 'Telepon / HP', 'trim|required|is_numeric|max_length[20]');
         $this->form_validation->set_rules('level', 'Level', 'trim|required|is_numeric');

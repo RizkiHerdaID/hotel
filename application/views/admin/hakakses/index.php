@@ -178,11 +178,25 @@
     }
 
     function detailUser(id, group) {
-        window.location.assign("<?=site_url('admin/hakAkses/details/')?>" + id + "/" + group)
+        $.ajax({
+            type: "POST",
+            url: "<?=site_url('admin/hakAkses/details')?>",
+            data: "id=" + id + "&group="+group,
+            success: function (msg) {
+                $("#div_result").html(msg);
+            }
+        });
     }
 
     function updateUser(id, group) {
-        window.location.assign("<?=site_url('admin/hakAkses/viewUpdate/')?>" + id + "/" + group)
+        $.ajax({
+            type: "POST",
+            url: "<?=site_url('admin/hakAkses/viewUpdate')?>",
+            data: "id=" + id + "&group="+group,
+            success: function (msg) {
+                $("#div_result").html(msg);
+            }
+        });
     }
 </script>
 
