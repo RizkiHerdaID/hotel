@@ -55,7 +55,19 @@
       </div>
     </div>
     <div class="panel-footer">
-      <a href="<?=site_url('admin/hakAkses')?>" class="btn btn-warning" >Kembali</a>
+      <a href="javascript:back()" class="btn btn-warning" >Kembali</a>
     </div>
   </div>
 </div>
+<script>
+  function back() {
+    $.ajax({
+      type: "POST",
+      url: "<?=site_url('admin/hakAkses/')?>",
+      data: "back=" + true,
+      success: function (msg) {
+        $("#div_result").html(msg);
+      }
+    });
+  }
+</script>
