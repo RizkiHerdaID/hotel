@@ -14,24 +14,33 @@ class Jasa extends CI_Controller {
 		$this->load->model('m_jasa');
 	}
 
-	public function index()
+	public function index($back = FALSE)
 	{
+        $back = $this->input->post('back');
+        $content = 'admin/jasa/index';
 		$data = [
 			'title' => 'Data Jasa',
 			'content' => 'admin/jasa/index',
 			'jasa' => $this->m_jasa->read()
 		];
-		$this->load->view($this->template, $data);
+        if ($back) {
+            $respone = $this->load->view($content, $data, TRUE);
+            echo $respone;
+        } else {
+            $this->load->view($this->template, $data);
+        }
 	}
 
-	public function viewUpdate($id)
+	public function viewUpdate()
 	{
+        $id = $this->input->post('id');
+        $content = 'admin/jasa/update';
 		$data = [
 			'title' => 'Update Data Jasa',
-			'content' => 'admin/jasa/update',
 			'jasa' => $this->m_jasa->read($id)
 		];
-		$this->load->view($this->template, $data);
+        $response = $this->load->view($content, $data, TRUE);
+        echo $response;
 	}
 
 	public function create(){
