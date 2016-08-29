@@ -147,7 +147,7 @@ MAIN SIDEBAR MENU
                     <li class="<?= $kamar_active ?>"><a href="<?php echo site_url('admin/kamar') ?>">Data Kamar</a></li>
                     <li class="<?= $makanan_active ?>"><a href="<?php echo site_url('admin/makanan') ?>">Makanan &
                             Minuman</a></li>
-                    <li class="<?= $jasa_active ?>"><a href="<?php echo site_url('admin/jasa') ?>">Jasa Lainnya</a></li>
+                    <li class="<?= $jasa_active ?>"><a href="<?php echo site_url('admin/jasa') ?>">Fasilitas & Jasa Lainnya</a></li>
                 </ul>
             </li>
             <?php } ?>
