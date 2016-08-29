@@ -64,9 +64,21 @@
             <?php endforeach; ?>
         </div>
         <div class="panel-footer">
-            <a href="<?= site_url('admin/hakAkses') ?>" class="btn btn-warning">Kembali</a>
+            <a href="javascript:back()" class="btn btn-warning">Kembali</a>
             <button id="Submit" name="Submit" class="btn btn-success pull-right">Update</button>
         </div>
     </div>
     </form>
 </div>
+<script>
+    function back() {
+        $.ajax({
+            type: "POST",
+            url: "<?=site_url('admin/hakAkses/')?>",
+            data: "back=" + true,
+            success: function (msg) {
+                $("#div_result").html(msg);
+            }
+        });
+    }
+</script>
