@@ -11,47 +11,60 @@ class Tamu extends CI_Controller {
         {
             redirect('auth');
         }
-		$this->load->model('m_tamu', 'm_tamu');
-		$this->load->model('m_grup', 'm_grup');
+		$this->load->model(array('m_tamu', 'm_grup'));
 	}
 
-	public function index()
+	public function index($back = FALSE)
 	{
+        $back = $this->input->post('back');
+        $content = 'admin/tamu/index';
 		$data = [
 			'title' => 'Data Tamu',
-			'content' => 'admin/tamu/index',
+			'content' => $content,
 			'tamu' => $this->m_tamu->read(),
-			'grup' => $this->m_grup->read()
+			'grup' => $this->m_grup->read(),
+            'negara' => $this->m_tamu->country()
 		];
-		$this->load->view($this->template, $data);
+        if($back){
+            $respone = $this->load->view($content, $data, TRUE);
+            echo $respone;
+        } else {
+            $this->load->view($this->template, $data);
+        }
 	}
 
-	public function details($id){
+	public function details(){
+        $id = $this->input->post('id');
+        $content = 'admin/tamu/detail';
         $data = [
             'title' => 'Detail Data Tamu',
-            'content' => 'admin/tamu/detail',
             'detail' => $this->m_tamu->read($id),
-            'grup' => $this->m_grup->read()
+            'grup' => $this->m_grup->read(),
+            'negara' => $this->m_tamu->country()
         ];
-        $this->load->view($this->template, $data);
+        $response = $this->load->view($content, $data, TRUE);
+        echo $response;
     }
 
-	public function viewUpdate($id){
+	public function viewUpdate(){
+        $id = $this->input->post('id');
+        $content = 'admin/tamu/update';
         $data = [
             'title' => 'Update Data Tamu',
-            'content' => 'admin/tamu/update',
             'tamu' => $this->m_tamu->read($id),
-            'grup' => $this->m_grup->read()
+            'grup' => $this->m_grup->read(),
+            'negara' => $this->m_tamu->country()
         ];
-        $this->load->view($this->template, $data);
+        $response = $this->load->view($content, $data, TRUE);
+        echo $response;
     }    
 
 	public function create(){
 		if($this->input->server('REQUEST_METHOD') == "POST")
         {
-        	$this->form_validation->set_rules('ktp', 'KTP', 'trim|required|min_length[8]|max_length[30]');
+        	$this->form_validation->set_rules('ktp', 'KTP', 'trim|required|min_length[8]|max_length[30]|numeric');
             $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required');
-            $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|required');
+            $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim');
             $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|max_length[100]');
             $this->form_validation->set_rules('phone', 'Telepon / HP', 'trim|required|is_natural|max_length[20]');
             $this->form_validation->set_rules('country', 'Negara', 'required');
@@ -109,9 +122,9 @@ class Tamu extends CI_Controller {
 		if($this->input->server('REQUEST_METHOD') == "POST")
         {
         	$this->form_validation->set_rules('id', 'ID Tamu', 'required|is_natural');
-        	$this->form_validation->set_rules('ktp', 'KTP', 'trim|required|min_length[8]|max_length[30]');
+        	$this->form_validation->set_rules('ktp', 'KTP', 'trim|required|min_length[8]|max_length[30]|numeric');
             $this->form_validation->set_rules('fname', 'Nama Depan', 'trim|required');
-            $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim|required');
+            $this->form_validation->set_rules('lname', 'Nama Belakang', 'trim');
             $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|max_length[100]');
             $this->form_validation->set_rules('phone', 'Telepon / HP', 'trim|required|is_natural|max_length[20]');
             $this->form_validation->set_rules('country', 'Negara', 'required');
