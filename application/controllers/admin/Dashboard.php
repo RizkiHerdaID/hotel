@@ -1,9 +1,9 @@
 <?php
 
 class Dashboard extends CI_Controller {
-	
+
 	var $template = 'admin/template';
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,14 +11,17 @@ class Dashboard extends CI_Controller {
         {
             redirect('auth');
         }
+        $this->load->model(array('m_jenis', 'm_booking'));
 	}
 
 	public function index()
 	{
-		$data = [
-			'today' => $this->getTgl(),
+		$content = "front";
+	    $data = [
 			'title' => 'Dashboard',
-			'content' => 'admin/dashboard'
+			'content' => 'admin/'.$content,
+            'daftar_kamar' => $this->m_jenis->group_by_jenis(),
+            'daftar_booking' => $this->m_booking->read()
 		];
 		$this->load->view($this->template, $data);
 	}

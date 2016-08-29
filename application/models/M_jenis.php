@@ -37,6 +37,16 @@ class M_jenis extends CI_Model {
     	$result = $this->db->update($this->table, $data, array('idclass' => $id));
     	return $result;
     }
+
+    public function group_by_jenis(){
+        $query =    "SELECT class.idclass, title, price, fasilitas, count(status) as kamar_kosong FROM class
+                    JOIN rooms
+                    ON class.idclass = rooms.idclass
+                      WHERE status = '0'
+                    GROUP BY class.idclass";
+        $result = $this->db->query($query);
+        return $result->result_array();
+    }
 }
 
 /* End of file m_jenis.php */
