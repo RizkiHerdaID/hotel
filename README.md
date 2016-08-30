@@ -2,9 +2,9 @@
 Hotel Project
 
 #Changelog 1032
-•	UI diperbaharui
-•	Fitur Cetak Struk Pembayaran dan Laporan Selesai
-•	Fixed Bug Data Tamu 
+•	UI diperbaharui.<br/>
+•	Fitur Cetak Struk Pembayaran dan Laporan Selesai.<br/>
+•	Fixed Bug Data Tamu.<br/>
 
 #Changelog 1029
 •	Load halaman lebih cepat pada saat update, detail, dan kembali dengan penggunaan ajax.<br/>
