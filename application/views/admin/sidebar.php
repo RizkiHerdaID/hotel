@@ -187,8 +187,8 @@ MAIN SIDEBAR MENU
                     <span>Laporan</span>
                 </a>
                 <ul class="sub">
-                    <li class="<?= $keuangan_active ?>"><a href="<?php echo site_url('admin/laporan/keuangan') ?>">Laporan Keuangan</a></li>
-                    <li class="<?= $daftar_tamu_active ?>"><a href="<?php echo site_url('admin/laporan/tamu') ?>">Laporan Daftar Tamu</a></li>
+                    <li class="<?= $keuangan_active ?>"><a target="_blank" href="<?php echo site_url('admin/laporan/keuangan') ?>">Laporan Keuangan</a></li>
+                    <li class="<?= $daftar_tamu_active ?>"><a target="_blank" href="<?php echo site_url('admin/laporan/tamu') ?>">Laporan Daftar Tamu</a></li>
                 </ul>
             </li>
             <?php } ?>

@@ -140,32 +140,6 @@ class M_check extends CI_Model {
 		return $result;
 	}
 
-	public function bayar($order_id)
-	{
-		$this->db->trans_start();
-		$this->db->set('order_status', '4');
-		$this->db->where('order_id', $order_id);
-		$this->db->update($this->table);
-
-        $this->db->select('*');
-        $this->db->from($this->table);
-        $this->db->where('order_id', $order_id);
-		$order = $this->db->get()->result_array();
-
-        foreach ($order as $list) {
-            $this->db->set('payment_date',  $this->getTgl());
-            $this->db->where('order_id', $list['order_id']);
-            $this->db->update('payment');
-
-            $this->db->set('check', '0');
-            $this->db->where('id', $list['guest_id']);
-            $this->db->update('guest');
-        }
-        $this->db->trans_complete();
-		$status =  $this->db->trans_status();
-		return $status;
-	}
-
 	public function delete($order_id)
 	{
 		$this->db->where('order_id', $order_id);
