@@ -25,15 +25,15 @@
 								<!-- Text input-->
                                <?php if(isset($booking)){ ?> <input id="booking_id" name="booking_id" type="text" value="" required="" hidden /> <?php } ?>
 								<input id="id" name="id" type="text" value="<?=$list['id']?>" required="" hidden />
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
-									<div class="col-md-5">
-										<input id="ktp" name="ktp" type="text" value="<?=$list['no_ktp']?>" placeholder="" class="form-control input-md" required="" readonly />
-									</div>
-									<div class="col-md-3">
-										<a href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-primary">Cari Tamu</a>
-									</div>
-								</div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
+                                    <div class="col-md-8 input-group" style="padding: 0px 15px">
+                                        <input id="ktp" name="ktp" type="text" value="<?=$list['no_ktp']?>" placeholder="" class="form-control input-md" required="" />
+                                        <span class="input-group-btn">
+                                        	<button href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-info" type="button">Cari Tamu</button>
+                                    	</span>
+                                    </div>
+                                </div>
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="fname">Nama Depan</label>
 									<div class="col-md-8">
@@ -117,16 +117,15 @@
 							<?php } else {?>
 							<fieldset>
 								<!-- Text input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
-									<div class="col-md-5">
-										<input id="ktp" name="ktp" type="text" value="<?=set_value('ktp')?>" placeholder="" class="form-control input-md" required="">
-
-									</div>
-									<div class="col-md-3">
-										<a href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-primary">Cari Tamu</a>
-									</div>
-								</div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ktp">Nomor KTP</label>
+                                    <div class="col-md-8 input-group" style="padding: 0px 15px">
+                                        <input id="ktp" name="ktp" type="text" value="" placeholder="" class="form-control input-md" required="" />
+                                        <span class="input-group-btn">
+                                        	<button href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-info" type="button">Cari Tamu</button>
+                                    	</span>
+                                    </div>
+                                </div>
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="fname">Nama Depan</label>
 									<div class="col-md-8">
@@ -251,7 +250,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Submit"></label>
 								<div class="col-md-4">
-									<button id="Submit" name="Submit" class="btn btn-warning">Check-in</button>
+									<button id="Submit" name="Submit" class="btn btn-info">Check-in</button>
 								</div>
 							</div>
 						</div>

@@ -2076,11 +2076,13 @@ th {
 .table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.42857143;
-  vertical-align: top;
+  vertical-align: middle;
+  text-align:center ;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
-  vertical-align: bottom;
+  vertical-align: middle;
+  text-align:center ;
   border-bottom: 2px solid #ddd;
 }
 .table > caption + thead > tr:first-child > th,
@@ -3586,7 +3588,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 20px 15px;
+  color: #1e6f8e;
+  text-decoration: solid ;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -5265,15 +5269,15 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #bce8f1;
 }
 .panel-warning {
-  border-color: #faebcc;
+  border-color: #d6f7ff;
 }
 .panel-warning > .panel-heading {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+  color: #1e6f8e;
+  background-color: #d1fcf2;
+  border-color: #bbe4fa;
 }
 .panel-warning > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #faebcc;
+  border-top-color: #acfffd;
 }
 .panel-warning > .panel-heading .badge {
   color: #fcf8e3;

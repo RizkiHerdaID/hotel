@@ -13,7 +13,9 @@ $datestring = '%d/%m/%Y';
 						<p><?=$this->session->flashdata('message'); ?></p>
 					</div>
 				<?php } ?>
-				<a type="button" href="<?=site_url('admin/check/viewCreate')?>" class="btn btn-warning" style="margin-bottom:5pt;">+ Check-in</a>
+				<a type="button" href="<?=site_url('admin/check/viewCreate')?>" class="btn btn-success" style="margin:5pt 10pt;">
+					<span class="glyphicon glyphicon-plus"></span> Check-in
+				</a>
 				<table class="table table-hover">
 					<thead>
 					<tr>
@@ -28,6 +30,7 @@ $datestring = '%d/%m/%Y';
 						<th>Aksi</th>
 					</tr>
 					</thead>
+					<!--TODO Tambahkan Fitur Detail Check-in -->
 					<tbody>
 					<?php foreach($check as $list): ?>
 						<tr <?php
@@ -78,11 +81,11 @@ $datestring = '%d/%m/%Y';
 							</td>
 							<?php switch ($list['order_status']){
 									case "1": ?>
-									<td align="center"><a href="<?=site_url('admin/check/checkIn/')?><?=$list['order_id']?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-log-out"></span> Check-in</a></td>
+									<td align="center"><a href="<?=site_url('admin/check/checkIn/')?><?=$list['order_id']?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-log-out"></span> Check-in</a></td>
 									<?php break; ?>
 										
 									<?php case "2": ?>
-									<td align="center"><a href="<?=site_url('admin/check/checkOut/')?><?=$list['order_id']?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-log-out"></span> Check-out</a></td>
+									<td align="center"><a href="<?=site_url('admin/check/checkOut/')?><?=$list['order_id']?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-log-out"></span> Check-out</a></td>
 									<?php break; ?>
 
 									<?php case "3": ?>

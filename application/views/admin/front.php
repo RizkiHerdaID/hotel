@@ -109,6 +109,6 @@
         </div>
     </div>
 </div><!-- /col-lg-9 END SECTION MIDDLE -->
-<div class="col-lg-3 ds">
+<div class="col-lg-3 hidden-md hidden-sm hidden-xs ds">
     <?php $this->load->view('admin/notification') ?>
 </div><!-- /col-lg-3 -->

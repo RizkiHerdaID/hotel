@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+    <div class="col-md-7 col-lg-7">
         <div class="panel panel-warning">
             <div class="panel-heading"><h4><?= $title ?></h4></div>
             <?php if ($this->session->flashdata('operation') != NULL) { ?>
@@ -51,7 +51,7 @@
                 </table>
         </div>
     </div>
-    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+    <div class="col-md-5 col-lg-5">
         <div class="panel panel-warning">
             <div class="panel-heading"><h4>Tambah Jasa Lain-lainnya</h4></div>
             <div class="panel-body">

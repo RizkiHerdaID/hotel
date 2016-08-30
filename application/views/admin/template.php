@@ -12,14 +12,13 @@
     <!--external css-->
     <link href="<?php echo base_url('assets_ad/') ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>css/zabuto_calendar.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>lineicons/style.css">
     
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets_ad/') ?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets_ad/') ?>css/style-responsive.css" rel="stylesheet">
-    <script src="<?php echo base_url('assets_ad/') ?>/js/chart-master/Chart.js"></script>
+    <link href="<?php echo base_url('assets_ad/') ?>css/button.css" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -41,8 +40,12 @@
         <a href="index.html" class="logo"><b><?= $title ?> - <?=$this->session->userdata('description')?></b></a>
         <!--logo end-->
         <div class="top-menu">
-          <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="<?=site_url('auth/logout')?>">Logout</a></li>
+          <ul class="nav pull-right">
+            <li>
+              <a class="hidden-xs logout" href="<?=site_url('auth/logout')?>"><i class="glyphicon glyphicon-log-out"></i>
+                <strong>Logout</strong>
+              </a>
+            </li>
           </ul>
         </div>
       </header>

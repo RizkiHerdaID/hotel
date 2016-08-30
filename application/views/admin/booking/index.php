@@ -13,14 +13,16 @@
 					<p><?=$this->session->flashdata('message'); ?></p>
 				</div>
 				<?php } ?>
-				<a type="button" href="<?=site_url('admin/booking/viewCreate')?>" class="btn btn-warning" style="margin-bottom:5pt;">+ Booking</a>
+				<a type="button" href="<?=site_url('admin/booking/viewCreate')?>" class="btn btn-primary" style="margin:5pt 10pt;">
+					<span class="glyphicon glyphicon-plus"></span> Booking
+				</a>
 				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th>Kode Booking</th>
 							<th>Nama Tamu</th>
-							<th>Alamat</th>
-							<th>Telepon / HP</th>
+							<th class="hidden-sm hidden-xs">Alamat</th>
+							<th class="hidden-sm hidden-xs">Telepon / HP</th>
 							<th>Jenis Kamar</th>
 							<th>Tanggal Masuk</th>
 							<th>Tanggal Keluar</th>
@@ -33,8 +35,8 @@
 						<tr>
 							<td><?=$list['kode']?></td>
 							<td><?=$list['nama_depan'].' '.$list['nama_belakang'] ?></td>
-							<td><?=$list['kota'].' - '.$list['provinsi']?></td>
-							<td><?=$list['telepon']?></td>
+							<td class="hidden-sm hidden-xs"><?=$list['kota'].' - '.$list['provinsi']?></td>
+							<td class="hidden-sm hidden-xs"><?=$list['telepon']?></td>
 							<td><?=$list['title']?></td>
 							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_in']))); ?></td>
 							<td align="center"><?php echo date('d M Y', strtotime(str_replace('-','/', $list['check_out']))); ?></td>

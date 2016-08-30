@@ -192,6 +192,12 @@ MAIN SIDEBAR MENU
                 </ul>
             </li>
             <?php } ?>
+            <li class="sub-menu">
+                <a class="" href="<?php echo site_url('auth/logout') ?>">
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
         <!-- sidebar menu end-->
     </div>

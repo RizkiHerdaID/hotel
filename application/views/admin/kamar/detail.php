@@ -123,7 +123,7 @@
 	function back() {
 		$.ajax({
 			type: "POST",
-			url: "<?=site_url('admin/jenis/')?>",
+			url: "<?=site_url('admin/kamar/')?>",
 			data: "back=" + true,
 			success: function (msg) {
 				$("#div_result").html(msg);

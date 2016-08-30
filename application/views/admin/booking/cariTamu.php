@@ -11,8 +11,8 @@
 							<th>No</th>
 							<th>No. KTP</th>
 							<th>Nama Lengkap</th>
-							<th>E-mail</th>
-							<th>Telepon / HP</th>
+							<th class="hidden-sm hidden-xs">E-mail</th>
+							<th class="hidden-sm hidden-xs">Telepon / HP</th>
 							<th>Grup Tamu</th>
 							<th>Diskon</th>
 							<th>Action</th>
@@ -26,8 +26,8 @@
 							<td><?=$no++?></td>
 							<td><?=$list['no_ktp']?></td>
 							<td><?=$list['nama_depan']?> <?=$list['nama_belakang']?> </td>
-							<td><?=$list['email']?></td>
-							<td><?=$list['telepon']?></td>
+							<td class="hidden-sm hidden-xs"><?=$list['email']?></td>
+							<td class="hidden-sm hidden-xs"><?=$list['telepon']?></td>
 							<td><?=$list['nama']?></td>
 							<td><?php if($list['diskon']>0){ echo $list['diskon']; echo ' %';} else { echo '-'; }?></td>
 							<td>
