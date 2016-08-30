@@ -29,7 +29,7 @@ class M_tamu extends CI_Model {
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->join('guest_group', $this->table.'.kode_grup = '.$this->guest_group.'.id_guest_group');
-        $this->db->join($this->coutry, $this->table.'.negara = '.$this->country.'.country_id');
+        $this->db->join($this->country, $this->table.'.negara = '.$this->country.'.country_id');
         $this->db->where('active', '1');
         $this->db->where('check', '0');
         $query = $this->db->get();
@@ -57,7 +57,7 @@ class M_tamu extends CI_Model {
     public function readTamu($id){
 		$this->db->select('*');
 		$this->db->join($this->guest_group, $this->table.'.kode_grup = '.$this->guest_group.'.id_guest_group');
-        $this->db->join($this->coutry, $this->table.'.negara = '.$this->country.'.country_id');
+        $this->db->join($this->country, $this->table.'.negara = '.$this->country.'.country_id');
 		$this->db->where('id', $id);
 		$this->db->order_by('id', 'desc');
 		$this->db->limit(1);
