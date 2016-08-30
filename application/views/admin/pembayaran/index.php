@@ -53,7 +53,7 @@
 									<td align="center"><button onclick='confirmBayarModal("<?=$list['order_id']?>")' class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-usd"></span> Bayar</button></td>
 								<?php break; ?>
 								<?php case "4":?>
-									<td align="center"><a href="" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a></td>
+									<td align="center"><a target="_blank" href="<?=site_url('admin/pembayaran/payment')?>/TRUE/<?=$list['payment_id']?>/<?=$list['kwitansi']?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a></td>
 										 <?php break; default: echo '<td></td>'?>
 							<?php }?>
 						</tr>
@@ -69,7 +69,7 @@
 	function confirmBayarModal(id){
 		$.ajax({
 				type : "GET",
-				url  : "<?=site_url('admin/check/payment?payment_id=')?>"+id,
+				url  : "<?=site_url('admin/pembayaran/payment?payment_id=')?>"+id,
 				success: function(data){
 					$("#sewaKamar").html(data);
 				}
@@ -80,7 +80,7 @@
 
 	function bayarData(id){
 		// do your stuffs with id
-		window.location.assign("<?=site_url('admin/check/bayar/')?>"+id)
+		window.location.assign("<?=site_url('admin/pembayaran/bayar/')?>"+id)
 		$('#bayarModal').modal('hide'); // now close modal
 	}
 </script>

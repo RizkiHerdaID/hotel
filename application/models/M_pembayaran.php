@@ -31,6 +31,38 @@ class M_pembayaran extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+    public function bayar($order_id)
+    {
+        $this->db->trans_start();
+        $this->db->set('order_status', '4');
+        $this->db->where('order_id', $order_id);
+        $this->db->update('order');
+
+        $this->db->select('*');
+        $this->db->from('order');
+        $this->db->join('payment', $this->table . '.order_id = order.order_id');
+        $this->db->where('order.order_id', $order_id);
+        $order = $this->db->get()->result_array();
+        $payment_id = 0;
+        $kwitansi = '';
+        foreach ($order as $list) {
+            $this->db->set('payment_date',  $this->getTgl());
+            $this->db->where('order_id', $list['order_id']);
+            $this->db->update('payment');
+
+            $this->db->set('check', '0');
+            $this->db->where('id', $list['guest_id']);
+            $this->db->update('guest');
+
+            $payment_id = $list['payment_id'];
+            $kwitansi = $list['kwitansi'];
+        }
+        $this->db->trans_complete();
+        $status =  $this->db->trans_status();
+        return array($status, $payment_id, $kwitansi);
+    }
+
     public function list_pesanan($payment_id=null)
     {
         $this->db->select('*');
@@ -138,6 +170,13 @@ class M_pembayaran extends CI_Model {
         $this->db->where('id_service', $id_service);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function getTgl()
+    {
+        $datestring = '%Y-%m-%d';
+        $time = time();
+        return mdate($datestring, $time);
     }
 }
 

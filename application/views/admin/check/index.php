@@ -90,7 +90,7 @@ $datestring = '%d/%m/%Y';
 									<?php break; ?>
 
 									<?php case "4": ?>
-									<td align="center"><a href="<?=site_url('admin/check/cetak/')?><?=$list['order_id']?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a></td>
+									<td align="center"><a target="_blank" href="<?=site_url('admin/pembayaran/payment')?>/TRUE/<?=$list['payment_id']?>/<?=$list['kwitansi']?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a></td>
 									<?php break; ?>
 
 									<?php case "-1": ?>
@@ -110,7 +110,7 @@ $datestring = '%d/%m/%Y';
 	function confirmBayarModal(id){
 		$.ajax({
 				type : "GET",
-				url  : "<?=site_url('admin/check/payment?payment_id=')?>"+id,
+				url  : "<?=site_url('admin/pembayaran/payment?payment_id=')?>"+id,
 				success: function(data){
 					$("#sewaKamar").html(data);
 				}
@@ -121,7 +121,7 @@ $datestring = '%d/%m/%Y';
 
 	function bayarData(id){
 		// do your stuffs with id
-		window.location.assign("<?=site_url('admin/check/bayar/')?>"+id)
+		window.location.assign("<?=site_url('admin/pembayaran/bayar/')?>"+id)
 		$('#bayarModal').modal('hide'); // now close modal
 	}
 
@@ -132,7 +132,7 @@ $datestring = '%d/%m/%Y';
 
 	function deleteData(id){
 		// do your stuffs with id
-		window.location.assign("<?=site_url('admin/check/delete/')?>"+id)
+		window.location.assign("<?=site_url('admin/pembayaran/delete/')?>"+id)
 		$('#deleteModal').modal('hide'); // now close modal
 	}
 

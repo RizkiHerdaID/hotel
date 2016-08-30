@@ -14,6 +14,7 @@ class Pembayaran extends CI_Controller {
 		$this->load->model('m_pembayaran', 'm_bayar');
         $this->load->model('m_makanan');
         $this->load->model('m_jasa');
+        $this->load->helper(array('dompdf', 'file'));
     }
 
 	public function index(){
@@ -25,6 +26,42 @@ class Pembayaran extends CI_Controller {
 		];
 		$this->load->view($this->template, $data);
 	}
+
+    public function bayar($order_id, $kwitansi = NULL)
+    {
+        $result = $this->m_bayar->bayar($order_id);
+        if ($result[0]) {
+            $this->payment(TRUE, $result[1], $result[2]);
+            $this->session->set_flashdata("operation", "success");
+            $this->session->set_flashdata("message", "<strong>Berhasil!</strong> Pembayaran berhasil tercatat");
+        } else {
+            $this->session->set_flashdata("operation", "danger");
+            $this->session->set_flashdata("message", "<strong>Gagal</strong> Terjadi kesalahan sistem.");
+        }
+        redirect("admin/pembayaran");
+    }
+
+    public function payment($cetak = FALSE, $payment_id = NULL, $kwitansi = NULL)
+    {
+        if(is_null($payment_id)){
+            $payment_id = $this->input->get('payment_id');
+        }
+        $content = [
+            'title' => 'Harga',
+            'hargaSewa' => $this->m_bayar->read($payment_id),
+            'foods' => $this->m_bayar->list_pesanan($payment_id),
+            'services' => $this->m_bayar->list_jasa($payment_id),
+            'kwitansi' => $kwitansi
+        ];
+
+        if ($cetak){
+            $data = $this->load->view('admin/pembayaran/cetak', $content, TRUE);
+            cetak_pdf($data, 'B7', $kwitansi);
+        } else {
+            $data = $this->load->view('admin/pembayaran/list_pembayaran', $content);
+            return $data;
+        }
+    }
 
     public function piutang(){
         $payment = $this->m_bayar->read();
@@ -102,6 +139,13 @@ class Pembayaran extends CI_Controller {
         ];
         $this->m_bayar->insert_service($data);
         redirect('admin/pembayaran/services/'.$payment_id);
+    }
+
+    public function getTgl()
+    {
+        $datestring = '%Y-%m-%d';
+        $time = time();
+        return mdate($datestring, $time);
     }
 }
 
