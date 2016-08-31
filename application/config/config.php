@@ -33,7 +33,7 @@ function __autoload($classname) {
 */
 if ($_SERVER['SERVER_ADDR'] === '::1') 
 {
-    $config['base_url'] = 'http://localhost/hotel/';
+    $config['base_url'] = 'http://127.0.0.1/hotel/';
 } else {
     $config['base_url'] = 'http://hotel.mascitra.com/';
 }
