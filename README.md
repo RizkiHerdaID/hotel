@@ -1,6 +1,9 @@
 # HOTEL
 Hotel Project
 
+#Changelog 1033
+•	Bug Fixed Tombol Cari Tamu di Fitur Check-in dan Booking.<br/>
+
 #Changelog 1032
 •	UI diperbaharui.<br/>
 •	Fitur Cetak Struk Pembayaran dan Laporan Selesai.<br/>

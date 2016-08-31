@@ -30,7 +30,7 @@
                                     <div class="col-md-8 input-group" style="padding: 0px 15px">
                                         <input id="ktp" name="ktp" type="text" value="<?=$list['no_ktp']?>" placeholder="" class="form-control input-md" required="" />
                                         <span class="input-group-btn">
-                                        	<button href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-info" type="button">Cari Tamu</button>
+                                        	<a href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-info">Cari Tamu</a>
                                     	</span>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                                     <div class="col-md-8 input-group" style="padding: 0px 15px">
                                         <input id="ktp" name="ktp" type="text" value="" placeholder="" class="form-control input-md" required="" />
                                         <span class="input-group-btn">
-                                        	<button href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-info" type="button">Cari Tamu</button>
+                                        	<a href="<?=site_url('admin/check/cariTamu')?>" class="btn btn-info">Cari Tamu</a>
                                     	</span>
                                     </div>
                                 </div>
