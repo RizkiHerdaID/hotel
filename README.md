@@ -1,13 +1,16 @@
 # HOTEL
 Hotel Project
 
+#Changelog 1034
+•	Bug Fixed tidak bisa menampilkan halaman Grup Tamu (#issue34)<br/>
+
 #Changelog 1033
-•	Bug Fixed Tombol Cari Tamu di Fitur Check-in dan Booking.<br/>
+•	Bug Fixed Tombol Cari Tamu di Fitur Check-in dan Booking(#issue33)<br/>
 
 #Changelog 1032
 •	UI diperbaharui.<br/>
 •	Fitur Cetak Struk Pembayaran dan Laporan Selesai.<br/>
-•	Fixed Bug Data Tamu.<br/>
+•	Fixed Bug Data Tamu (#issue29)<br/>
 
 #Changelog 1029
 •	Load halaman lebih cepat pada saat update, detail, dan kembali dengan penggunaan ajax.<br/>
