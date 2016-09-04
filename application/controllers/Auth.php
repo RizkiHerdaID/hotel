@@ -29,17 +29,17 @@ class Auth extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-
         if ($this->authentication->login($username, $password)) {   // Cek username & password pada database
             $user_id = $this->session->userdata('identifier');
             $user = $this->m_hakakses->get_detail($user_id);     // Digunakan untuk mengetahui level dari Pengurus yang sedang Login
-
             if (count($user) > 0) {
                 foreach ($user as $list) {
                     $this->session->set_userdata('active', $list['active']);
                     $this->session->set_userdata('nama_user', $list['first_name'] . ' ' . $list['last_name']);
                     $this->session->set_userdata('group_id', $list['group_id']);
                     $this->session->set_userdata('description', $list['description']);  // Deskripsi Level
+                    $this->session->set_userdata('id_hotel', $list['id_hotel']);
+                    $this->session->set_userdata('nama_hotel', $list['nama_hotel']);
                 }
                 redirect('admin/dashboard');
             } else {

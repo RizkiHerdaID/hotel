@@ -134,7 +134,7 @@ class Authentication {
 	 * @param	string [$password] The users password
 	 * @return	integer|boolean Either the user ID or FALSEupon failure
 	 */
-	public function create_user($username, $password)
+	public function create_user($username, $password, $id_hotel)
 	{
 
 		// Ensure username is available
@@ -153,7 +153,8 @@ class Authentication {
 		// Define data to insert
 		$data = array(
 			$this->username_field => $username,
-			$this->password_field => $password
+			$this->password_field => $password,
+            'id_hotel'=> $id_hotel
 		);
 
 		// If inserting data fails

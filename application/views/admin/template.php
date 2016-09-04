@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <title><?= $title ?> - <?=$this->session->userdata('description')?></title>
+    <meta name="author" content="Rizki Herdatullah">
+    <meta name="keyword" content="Hotel, Lumajang, Hotel in Lumajang">
+    <title><?=$this->session->userdata('nama_hotel')?> | <?=$this->session->userdata('description')?></title>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets_ad/') ?>css/bootstrap.css" rel="stylesheet">
     <!--external css-->
@@ -37,7 +37,7 @@
           <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="index.html" class="logo"><b><?= $title ?> - <?=$this->session->userdata('description')?></b></a>
+        <a href="<?php site_url('admin/dashboard') ?>" class="logo"><b><?=$this->session->userdata('nama_hotel')?> Hotel</b></a>
         <!--logo end-->
         <div class="top-menu">
           <ul class="nav pull-right">
