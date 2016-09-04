@@ -49,7 +49,7 @@ class M_jenis extends CI_Model
         $query = "SELECT class.idclass, title, price, fasilitas, count(status) as kamar_kosong FROM class
                     JOIN rooms
                     ON class.idclass = rooms.idclass
-                      WHERE status = '0'
+                      WHERE status = '0' AND id_hotel = $this->id_hotel
                     GROUP BY class.idclass";
         $result = $this->db->query($query);
         return $result->result_array();
