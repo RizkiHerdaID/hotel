@@ -3,8 +3,9 @@
 class Grup extends CI_Controller
 {
 
-    var $template = 'admin/template';
+    private $template = 'admin/template';
     private $pk = 'kode_grup';
+    private $id_hotel;
 
     public function __construct()
     {
@@ -12,6 +13,7 @@ class Grup extends CI_Controller
         if (!$this->authentication->is_loggedin()) {
             redirect('auth');
         }
+        $this->id_hotel = $this->session->userdata('id_hotel');
         $this->load->model('m_grup', 'm_grup');
     }
 
@@ -56,7 +58,8 @@ class Grup extends CI_Controller
                 $data = [
                     'kode_grup' => $this->input->post('gcode'),
                     'nama' => $this->input->post('gname'),
-                    'diskon' => $this->input->post('diskon')
+                    'diskon' => $this->input->post('diskon'),
+                    'id_hotel' => $this->id_hotel
                 ];
 
                 if ($this->m_grup->create($data)) {

@@ -5,16 +5,18 @@ class M_grup extends CI_Model
 
     private $table = 'guest_group';
     private $pk = 'id_guest_group';
+    private $id_hotel;
 
     public function __construct()
     {
         parent::__construct();
-
+        $this->id_hotel = $this->session->userdata('id_hotel');
     }
 
     public function read($id_guest_group = null)
     {
         $this->db->where('status_guest_group', '1');
+        $this->db->where('id_hotel', $this->id_hotel);
         if (!is_null($id_guest_group)) {
             $this->db->where('id_guest_group', $id_guest_group);
         }
