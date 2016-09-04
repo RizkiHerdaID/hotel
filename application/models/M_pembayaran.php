@@ -9,10 +9,12 @@ class M_pembayaran extends CI_Model {
 	private $join3 = 'guest';
 	private $join4 = 'rooms';
 	private $join5 = 'guest_group';
+    private $id_hotel;
 
 	public function __construct()
 	{
 		parent::__construct();
+        $this->id_hotel = $this->session->userdata('id_hotel');
 		
 	}
 
@@ -24,6 +26,7 @@ class M_pembayaran extends CI_Model {
 		$this->db->join($this->join3, $this->join3.'.id = '.$this->join.'.guest_id');
 		$this->db->join($this->join4, $this->join4.'.idrooms = '.$this->join.'.idrooms');
 		$this->db->join($this->join5, $this->join3.'.kode_grup = '.$this->join5.'.id_guest_group');
+        $this->db->where('guest_group.id_hotel', $this->id_hotel);
 		if (!is_null($payment_id)) {
 			$this->db->where('payment_id', $payment_id);
 		}
