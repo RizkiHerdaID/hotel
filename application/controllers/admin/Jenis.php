@@ -21,7 +21,6 @@ class Jenis extends CI_Controller
     {
         $back = $this->input->post('back');
         $content = 'admin/jenis/index';
-        $facilities = ['AC', 'TV', 'Hot Water', 'Kulkas'];
         $data = [
             'title' => 'Data Jenis Kamar',
             'content' => $content,

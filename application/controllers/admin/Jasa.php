@@ -3,6 +3,7 @@
 class Jasa extends CI_Controller {
 
 	var $template = 'admin/template';
+    private $id_hotel;
 	
 	public function __construct()
 	{
@@ -11,6 +12,7 @@ class Jasa extends CI_Controller {
         {
             redirect('auth');
         }
+        $this->id_hotel = $this->session->userdata('id_hotel');
 		$this->load->model('m_jasa');
 	}
 
@@ -59,7 +61,8 @@ class Jasa extends CI_Controller {
             	$data = [
                     'nama' => $this->input->post('servicename'),
                     'harga' => $this->input->post('price'),
-                    'jenis' => $this->input->post('jenis')
+                    'jenis' => $this->input->post('jenis'),
+                    'id_hotel' => $this->id_hotel
                 ];
 
                 if($this->m_jasa->create($data)){
