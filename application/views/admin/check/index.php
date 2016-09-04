@@ -26,7 +26,6 @@ $datestring = '%d/%m/%Y';
 						<th>Tanggal Masuk</th>
 						<th>Tanggal Keluar</th>
 						<th>Status</th>
-						<th>Update/Hapus</th>
 						<th>Aksi</th>
 					</tr>
 					</thead>
@@ -75,32 +74,31 @@ $datestring = '%d/%m/%Y';
 								}
 								?>
 							</td>
-							<td>
-								<a href="#" class="btn btn-xs btn-warning">Update</a>
-								<?php if($list['order_status'] < 2) { ?><a href="#" class="btn btn-xs btn-danger" onclick='confirmDeleteModal("<?=$list['order_id']?>")'>Hapus</a> <?php } ?>
-							</td>
-							<?php switch ($list['order_status']){
+							<td align="center">
+								<?php if($list['order_status'] < 2) { ?><a href="#" class="btn btn-xs btn-danger" onclick='confirmDeleteModal("<?=$list['order_id']?>")'>Hapus</a> <?php }?>
+							    <?php switch ($list['order_status']){
 									case "1": ?>
-									<td align="center"><a href="<?=site_url('admin/check/checkIn/')?><?=$list['order_id']?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-log-out"></span> Check-in</a></td>
+									    <a href="<?=site_url('admin/check/checkIn/')?><?=$list['order_id']?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-log-out"></span> Check-in</a>
 									<?php break; ?>
-										
+
 									<?php case "2": ?>
-									<td align="center"><a href="<?=site_url('admin/check/checkOut/')?><?=$list['order_id']?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-log-out"></span> Check-out</a></td>
+									<a href="<?=site_url('admin/check/checkOut/')?><?=$list['order_id']?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-log-out"></span> Check-out</a>
 									<?php break; ?>
 
 									<?php case "3": ?>
-									<td align="center"><button onclick='confirmBayarModal("<?=$list['payment_id']?>")' class="btn btn-xs btn-primary"> <span class="glyphicon glyphicon-usd"></span> Bayar</button></td>
+									    <button onclick='confirmBayarModal("<?=$list['payment_id']?>")' class="btn btn-xs btn-primary"> <span class="glyphicon glyphicon-usd"></span> Bayar</button>
 									<?php break; ?>
 
 									<?php case "4": ?>
-									<td align="center"><a target="_blank" href="<?=site_url('admin/pembayaran/payment')?>/TRUE/<?=$list['payment_id']?>/<?=$list['kwitansi']?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a></td>
+									    <a target="_blank" href="<?=site_url('admin/pembayaran/payment')?>/TRUE/<?=$list['payment_id']?>/<?=$list['kwitansi']?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-print"></span> Cetak</a>
 									<?php break; ?>
 
 									<?php case "-1": ?>
-										<td align="center"><small>Data Ditolak</small></td>
+										<small>Data Ditolak</small></td>
 									<?php break; ?>
 
-							<?php default: echo '<td><small>Menunggu Approval</small></td>'; } ?>
+							    <?php default: echo '<td><small>Menunggu Approval</small>'; } ?>
+                            </td>
 						</tr>
 					<?php endforeach; ?>
 					</tbody>

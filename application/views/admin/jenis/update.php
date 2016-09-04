@@ -79,12 +79,6 @@
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="photo">Foto Kamar</label>
-                            <div class="col-md-8">
-                                <input id="photo" name="photo" class="input-file" type="file">
-                            </div>
-                        </div>
                     </fieldset>
                 </div>
                 <div class="panel-footer">
