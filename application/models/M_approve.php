@@ -8,11 +8,12 @@ class M_approve extends CI_Model
     private $join = 'guest';
     private $join2 = 'class';
     private $join5 = 'guest_group';
+    private $id_hotel;
 
     public function __construct()
     {
         parent::__construct();
-
+        $this->id_hotel = $this->session->userdata('id_hotel');
     }
 
     public function read($id = null)
@@ -22,6 +23,7 @@ class M_approve extends CI_Model
         $this->db->join($this->join, $this->table . '.guest_id = ' . $this->join . '.id');
         $this->db->join($this->join2, $this->table . '.class_id = ' . $this->join2 . '.idclass');
         $this->db->join($this->join5, $this->join.'.kode_grup = '.$this->join5.'.id_guest_group');
+        $this->db->where('guest_group.id_hotel', $this->id_hotel);
         if (!is_null($id)) {
             $this->db->where('id', $id);
         }
