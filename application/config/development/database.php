@@ -71,15 +71,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'online';
+$active_group = 'offline';
 
 $query_builder = TRUE;
-$db['online'] = array(
+$db['offline'] = array(
     'dsn'   => '',
-    'hostname' => 'mascitra.com',
-    'username' => 'mascitra_hotel',
-    'password' => 'hotel12345',
-    'database' => 'mascitra_hotel',
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'hotel',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
