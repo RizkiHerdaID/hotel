@@ -3,6 +3,7 @@
 class Booking extends CI_Controller
 {
     var $template = 'admin/template';
+    private $id_hotel;
 
     public function __construct()
     {
@@ -10,6 +11,7 @@ class Booking extends CI_Controller
         if (!$this->authentication->is_loggedin()) {
             redirect('auth');
         }
+        $this->id_hotel = $this->session->userdata('id_hotel');
         $this->load->model('m_booking');
         $this->load->model('m_kamar');
         $this->load->model('m_tamu');
@@ -92,7 +94,7 @@ class Booking extends CI_Controller
                         'provinsi' => $this->input->post('province'),
                         'negara' => $this->input->post('country'),
                         'zip' => $this->input->post('zipcode'),
-                        'kode_grup' => $this->input->post('gcode')
+                        'kode_grup' => $this->input->post('gcode'),
                     ];
                     if ($this->m_tamu->create($data)) {
                         $idTop = $this->m_tamu->readTop();
@@ -108,7 +110,8 @@ class Booking extends CI_Controller
                             'class_id' => $class_id,
                             'tgl_order' => $this->getTgl(),
                             'check_in' => $this->input->post('check-in'),
-                            'check_out' => $this->input->post('check-out')
+                            'check_out' => $this->input->post('check-out'),
+                            'id_hotel' => $this->id_hotel
                         ];
                         if ($this->m_booking->create($data)) {
                             $this->session->set_flashdata("operation", "success");
