@@ -192,8 +192,8 @@ MAIN SIDEBAR MENU
                 </ul>
             </li>
             <?php } ?>
-            <li class="sub-menu">
-                <a class="" href="<?php echo site_url('auth/logout') ?>">
+            <li class="sub-menu" >
+                <a href="javascript:confirmLogoutModal();" class="">
                     <i class="glyphicon glyphicon-log-out"></i>
                     <span>Logout</span>
                 </a>
@@ -203,3 +203,33 @@ MAIN SIDEBAR MENU
     </div>
 </aside>
 <!--sidebar end-->
+<script type="text/javascript">
+    function confirmLogoutModal(){
+        $('#logoutModal').modal();
+        $('#logoutButton').html('<a class="btn btn-primary" onclick="logout()">Ya</a>');
+    }
+
+    function logout(){
+        // do your stuffs with id
+        window.location.assign("<?=site_url('auth/logout')?>");
+        $('#logoutModal').modal('hide'); // now close modal
+    }
+</script>
+<div id="logoutModal" class="modal fade bs-example-modal-sm" role='dialog'>
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Anda Yakin ingin Logout</h4>
+            </div>
+            <div class="modal-body">
+                Pilih "Ya" Jika Anda yakin.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <span id= 'logoutButton'></span>
+            </div>
+
+        </div>
+    </div>
+</div>

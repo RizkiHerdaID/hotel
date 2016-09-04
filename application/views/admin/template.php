@@ -11,14 +11,14 @@
     <link href="<?php echo base_url('assets_ad/') ?>css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="<?php echo base_url('assets_ad/') ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>css/zabuto_calendar.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/') ?>lineicons/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/css/zabuto_calendar.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/js/gritter/css/jquery.gritter.css') ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets_ad/lineicons/style.css') ?>">
     
     <!-- Custom styles for this template -->
-    <link href="<?php echo base_url('assets_ad/') ?>css/style.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets_ad/') ?>css/style-responsive.css" rel="stylesheet">
-    <link href="<?php echo base_url('assets_ad/') ?>css/button.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets_ad/css/style.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets_ad/css/style-responsive.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets_ad/css/button.css') ?>" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -76,20 +76,20 @@
       </section>
     </section>
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="<?php echo base_url('assets_ad/') ?>/js/jquery-1.8.3.min.js"></script>
-    <script src="<?php echo base_url('assets_ad/') ?>/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="<?php echo base_url('assets_ad/') ?>/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.scrollTo.min.js"></script>
-    <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets_ad/') ?>/js/jquery.sparkline.js"></script>
+    <script src="<?php echo base_url('assets_ad/js/jquery-1.8.3.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets_ad/js/bootstrap.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets_ad/js/jquery.dcjqaccordion.2.7.js') ?>"></script>
+    <script src="<?php echo base_url('assets_ad/js/jquery.scrollTo.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets_ad/js/jquery.nicescroll.js') ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets_ad/js/jquery.sparkline.js') ?>"></script>
     <!--common script for all pages-->
-    <script src="<?php echo base_url('assets_ad/') ?>/js/common-scripts.js"></script>
+    <script src="<?php echo base_url('assets_ad/js/common-scripts.js') ?>"></script>
     
-    <script type="text/javascript" src="<?php echo base_url('assets_ad/') ?>/js/gritter/js/jquery.gritter.js"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets_ad/') ?>/js/gritter-conf.js"></script>
+    <script src="<?php echo base_url('assets_ad/js/gritter/js/jquery.gritter.js') ?>"></script>
+    <script src="<?php echo base_url('assets_ad/js/gritter-conf.js') ?>"></script>
     <!--script for this page-->
-    <script src="<?php echo base_url('assets_ad/') ?>/js/sparkline-chart.js"></script>
-    <script src="<?php echo base_url('assets_ad/') ?>/js/zabuto_calendar.js"></script>
+    <script src="<?php echo base_url('assets_ad/js/sparkline-chart.js') ?>"></script>
+    <script src="<?php echo base_url('assets_ad/js/zabuto_calendar.js') ?>"></script>
 <!--  <script type="text/javascript">
         $(document).ready(function () {
         var unique_id = $.gritter.add({
