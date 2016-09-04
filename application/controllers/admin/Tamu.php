@@ -112,7 +112,8 @@ class Tamu extends CI_Controller {
 			'title' => 'Data Tamu',
 			'content' => 'admin/tamu/index',
 			'tamu' => $this->m_tamu->read(),
-			'grup' => $this->m_grup->read()
+			'grup' => $this->m_grup->read(),
+            'negara' => $this->m_tamu->country()
 		];
         $this->load->view($this->template, $data);
 	}

@@ -5,11 +5,12 @@ class M_tamu extends CI_Model {
 	private $table = 'guest';
     private $guest_group = 'guest_group';
     private $country = 'negara';
+    private $id_hotel;
 
 	public function __construct()
 	{
 		parent::__construct();
-		
+		$this->id_hotel = $this->session->userdata('id_hotel');
 	}
 
 	public function read($id=null){
@@ -17,6 +18,7 @@ class M_tamu extends CI_Model {
 		$this->db->from($this->table);
 		$this->db->join($this->guest_group, $this->table.'.kode_grup = '.$this->guest_group.'.id_guest_group');
         $this->db->join($this->country, $this->table.'.negara = '.$this->country.'.country_id');
+        $this->db->where('id_hotel', $this->id_hotel);
 		if (!is_null($id)) {
 			$this->db->where('id', $id);
 		}
