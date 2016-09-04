@@ -7,11 +7,12 @@ class M_check extends CI_Model {
 	private $join = 'guest';
 	private $join2 = 'class';
     private $payment = 'payment';
+    private $id_hotel;
 
 	public function __construct()
 	{
 		parent::__construct();
-		
+        $this->id_hotel = $this->session->userdata('id_hotel');
 	}
 
 	public function read($id=null){
@@ -22,6 +23,7 @@ class M_check extends CI_Model {
 		$this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
         $this->db->join('rooms', $this->table.'.idrooms = rooms.idrooms');
         $this->db->join('guest_group', 'guest_group'.'.id_guest_group = '.$this->join.'.kode_grup');
+        $this->db->where('guest_group.id_hotel', $this->id_hotel);
 		if (!is_null($id)) {
 			$this->db->where('id', $id);
 		}
