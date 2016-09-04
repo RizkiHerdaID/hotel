@@ -14,8 +14,8 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>No. Jenis</th>
-                        <th>Kode Kamar</th>
+                        <th>Kode Jenis</th>
+                        <th>Nama Kamar</th>
                         <th>Harga</th>
                         <th>Action</th>
                     </tr>

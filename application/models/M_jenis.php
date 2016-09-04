@@ -5,11 +5,12 @@ class M_jenis extends CI_Model
 
     private $table = 'class';
     private $pk = 'idclass';
+    private $id_hotel;
 
     public function __construct()
     {
         parent::__construct();
-
+        $this->id_hotel = $this->session->userdata('id_hotel');
     }
 
     public function read($id = null)
@@ -18,6 +19,7 @@ class M_jenis extends CI_Model
             $this->db->where($this->pk, $id);
         }
         $this->db->where('active', '1');
+        $this->db->where('id_hotel', $this->id_hotel);
         $query = $this->db->get($this->table);
         return $query->result_array();
     }

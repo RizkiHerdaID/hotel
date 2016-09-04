@@ -4,6 +4,7 @@ class Jenis extends CI_Controller
 {
 
     var $template = 'admin/template';
+    private $id_hotel;
 
     public function __construct()
     {
@@ -11,6 +12,7 @@ class Jenis extends CI_Controller
         if (!$this->authentication->is_loggedin()) {
             redirect('auth');
         }
+        $this->id_hotel = $this->session->userdata('id_hotel');
         $this->load->model('m_jenis');
         $this->load->model('m_jasa');
     }
@@ -86,7 +88,8 @@ class Jenis extends CI_Controller
                     'title' => $this->input->post('jenis'),
                     'price' => $this->input->post('harga'),
                     'tahun' => $this->input->post('tahun'),
-                    'fasilitas' => implode(",", $facilities)
+                    'fasilitas' => implode(",", $facilities),
+                    'id_hotel' => $this->id_hotel
                 ];
 
                 if ($this->m_jenis->create($data)) {
