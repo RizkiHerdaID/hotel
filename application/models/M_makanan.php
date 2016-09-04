@@ -4,15 +4,17 @@ class M_makanan extends CI_Model {
 
 	private $table = 'foods';
 	private $pk = 'id_food';
+    private $id_hotel;
 
 	public function __construct()
 	{
 		parent::__construct();
-		
+        $this->id_hotel = $this->session->userdata('id_hotel');
 	}
 
 	public function read($id=null){
 		$this->db->where('active', '1');
+        $this->db->where('id_hotel', $this->id_hotel);
 		if(!is_null($id)){
 			$this->db->where($this->pk, $id);
 		}

@@ -4,6 +4,7 @@ class Makanan extends CI_Controller
 {
 
     var $template = 'admin/template';
+    private $id_hotel;
 
     public function __construct()
     {
@@ -11,6 +12,7 @@ class Makanan extends CI_Controller
         if (!$this->authentication->is_loggedin()) {
             redirect('auth');
         }
+        $this->id_hotel = $this->session->userdata('id_hotel');
         $this->load->model('m_makanan');
     }
 
@@ -47,7 +49,8 @@ class Makanan extends CI_Controller
                 $data = [
                     'nama' => $this->input->post('foodname'),
                     'harga' => $this->input->post('price'),
-                    'jenis_makanan' => $this->input->post('jenis')
+                    'jenis_makanan' => $this->input->post('jenis'),
+                    'id_hotel' => $this->id_hotel
                 ];
                 if ($this->m_makanan->create($data)) {
                     if ($data['jenis_makanan'] == 0) {
