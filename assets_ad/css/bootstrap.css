@@ -5269,15 +5269,15 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #bce8f1;
 }
 .panel-warning {
-  border-color: #d6f7ff;
+  border-color: #faebcc;
 }
 .panel-warning > .panel-heading {
-  color: #1e6f8e;
-  background-color: #d1fcf2;
-  border-color: #bbe4fa;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
 }
 .panel-warning > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #acfffd;
+  border-top-color: #faebcc;
 }
 .panel-warning > .panel-heading .badge {
   color: #fcf8e3;
