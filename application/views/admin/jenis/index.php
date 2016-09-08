@@ -102,14 +102,14 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="facilities">Fasilitas</label>
                             <div class="col-md-8">
-                                <?php $i = 1;
+                                <?php $i = 1; if(count($facilities)==0) {echo 'Mohon isi Fasilitas di Submenu Fasilitas & Jasa Lainnya';} else {
                                 foreach ($facilities as $list): if ($i % 3 == 1) echo '<br/>'; ?>
                                     <label class="checkbox-inline" for="facilities-<?= $i ?>" style="margin-right:1pt;">
                                         <input type="checkbox" name="facilities[]" id="facilities-<?= $i++ ?>"
                                                value="<?= $list['nama'] ?>">
                                         <?= $list['nama'] ?>
                                     </label>
-                                <?php endforeach; ?>
+                                <?php endforeach;} ?>
                             </div>
                         </div>
                         <!-- Button -->

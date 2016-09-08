@@ -35,6 +35,23 @@ class M_pembayaran extends CI_Model {
 		return $query->result_array();
 	}
 
+    public function readAdminSuper($payment_id=null){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join($this->join, $this->table.'.order_id = '.$this->join.'.order_id');
+        $this->db->join($this->join2, $this->join.'.class_id = '.$this->join2.'.idclass');
+        $this->db->join($this->join3, $this->join3.'.id = '.$this->join.'.guest_id');
+        $this->db->join($this->join4, $this->join4.'.idrooms = '.$this->join.'.idrooms');
+        $this->db->join($this->join5, $this->join3.'.kode_grup = '.$this->join5.'.id_guest_group');
+        $this->db->join('hotel', 'hotel.id_hotel = '.$this->join5.'.id_hotel');
+        if (!is_null($payment_id)) {
+            $this->db->where('payment_id', $payment_id);
+        }
+        $this->db->order_by('hotel.id_hotel', 'desc');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function bayar($order_id)
     {
         $this->db->trans_start();

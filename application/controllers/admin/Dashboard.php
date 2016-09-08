@@ -26,6 +26,15 @@ class Dashboard extends CI_Controller {
 		$this->load->view($this->template, $data);
 	}
 
+    public function indexAdminSuper()
+    {
+        $data = [
+            'title' => 'Dashboard',
+            'content' => "adminsuper/front"
+        ];
+        $this->load->view('adminsuper/template', $data);
+    }
+
 	public function getTgl(){
 		$datestring = '%d/%m/%Y';
 		$time = time();

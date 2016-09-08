@@ -41,6 +41,9 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('id_hotel', $list['id_hotel']);
                     $this->session->set_userdata('nama_hotel', $list['nama_hotel']);
                 }
+                if ($list['id_hotel'] == 0){
+                    redirect('admin/dashboard/indexAdminSuper');
+                }
                 redirect('admin/dashboard');
             } else {
                 $this->session->set_flashdata("message", "Username dan Password Salah!");

@@ -33,8 +33,25 @@ class M_hakakses extends CI_Model {
 		return $query->result_array();
 	}
 
+    public function readAdminSuper($id_user=null, $group_id=null){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join($this->users_groups, $this->table.'.user_id = '.$this->users_groups.'.user_id');
+        $this->db->join($this->groups, $this->users_groups.'.group_id = '.$this->groups.'.id');
+        $this->db->join($this->hotel, $this->hotel.'.id_hotel= '.$this->table.'.id_hotel');
+        $this->db->where('active', '1');
+        $this->db->where('users_groups.group_id', '1');
+        if (!is_null($id_user) && !is_null($group_id)) {
+            $this->db->where($this->table.'.user_id', $id_user);
+            $this->db->where($this->users_groups.'.group_id', $group_id);
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 	public function create($data, $id_group, $username, $password){
 	    $status = false;
+        $grup = array();
         $user_id = $this->authentication->create_user($username, $password, $this->id_hotel);
         if ($user_id !== FALSE)
         {
@@ -63,6 +80,63 @@ class M_hakakses extends CI_Model {
             $status = $user_id;
         }
         return $status;
+    }
+
+    public function createAdminSuper($data, $nama_hotel, $username, $password){
+        $grup = array();
+        $this->db->select('*');
+        $this->db->order_by('id_hotel', 'DESC');
+        $this->db->from('hotel');
+        $this->db->limit('1');
+        $hotel = $this->db->get()->result_array();
+
+        $topHotel = 0;
+
+        foreach ($hotel as $list){
+            $topHotel = (int) $list['id_hotel'];
+        }
+        $topHotel++;
+        $user_id = $this->authentication->create_user($username, $password, $topHotel);
+
+        $status = false;
+
+        $hotel = [
+            'nama_hotel' => $nama_hotel
+        ];
+        $this->db->set($hotel);
+        $this->db->insert('hotel');
+        if ($user_id !== FALSE)
+        {
+
+            $this->db->select('*');
+            $this->db->order_by('user_id', 'DESC');
+            $this->db->from($this->table);
+            $this->db->limit('1');
+            $user = $this->db->get()->result_array();
+            $idTop = 0;
+            foreach($user as $list):
+                $idTop = $list['user_id'];
+                $grup = [
+                    'user_id' => $list['user_id'],
+                    'group_id' => '1',
+                    'id_hotel' => $topHotel
+                ];
+            endforeach;
+            $this->db->set($data);
+            $this->db->where('user_id', $idTop);
+            $this->db->update($this->table);
+
+            $data = ['id_hotel' => $topHotel];
+            $this->db->set($data);
+            $this->db->where('user_id', $idTop);
+            $this->db->update($this->table);
+
+            $this->db->set($grup);
+            $this->db->insert('users_groups');
+        } else {
+            $status = $user_id;
+        }
+        return true;
     }
 
 	public function update($data, $user_id){

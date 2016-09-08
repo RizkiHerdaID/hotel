@@ -36,6 +36,27 @@ class Laporan extends CI_Controller {
         $data = $this->load->view('admin/laporan/tamu', $data, TRUE);
         cetak_tamu($data);
     }
+
+    public function keuanganAdminSuper(){
+        $payment = $this->m_bayar->readAdminSuper();
+        $data = [
+            'title' => "Laporan Keuangan",
+            'content' => "adminsuper/laporan/keuangan",
+            'payment' => $payment
+        ];
+        $data = $this->load->view('adminsuper/laporan/keuangan', $data, TRUE);
+        cetak_tamu($data);
+    }
+
+    public function tamuAdminSuper(){
+        $data = [
+            'title' => "Laporan Daftar Tamu",
+            'content' => "adminsuper/laporan/tamu",
+            'check' => $this->m_check->readAdminSuper()
+        ];
+        $data = $this->load->view('adminsuper/laporan/tamu', $data, TRUE);
+        cetak_tamu($data);
+    }
 }
 
 /* End of file  */

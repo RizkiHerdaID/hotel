@@ -32,6 +32,23 @@ class M_check extends CI_Model {
 		return $query->result_array();
 	}
 
+    public function readAdminSuper($id=null){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join($this->join, $this->table.'.guest_id = '.$this->join.'.id');
+        $this->db->join($this->payment, $this->table.'.order_id = '.$this->payment.'.order_id');
+        $this->db->join($this->join2, $this->table.'.class_id = '.$this->join2.'.idclass');
+        $this->db->join('rooms', $this->table.'.idrooms = rooms.idrooms');
+        $this->db->join('guest_group', 'guest_group'.'.id_guest_group = '.$this->join.'.kode_grup');
+        $this->db->join('hotel', 'hotel.id_hotel = guest_group.id_hotel');
+        if (!is_null($id)) {
+            $this->db->where('id', $id);
+        }
+        $this->db->order_by('order.order_id', 'desc');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 	public function create($data){
 
 		$this->db->insert($this->table, $data);
