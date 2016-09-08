@@ -72,8 +72,10 @@ class M_hakakses extends CI_Model {
                 ];
             endforeach;
             $this->db->where('user_id', $idTop);
-            $this->db->update($this->table, $data);
-            $this->db->insert('users_groups', $grup);
+            $this->db->set($data);
+            $this->db->update($this->table);
+            $this->db->set($grup);
+            $this->db->insert('users_groups');
             $this->db->trans_complete();
             $status =  $this->db->trans_status();
         } else {
